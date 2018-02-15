@@ -32,8 +32,7 @@ Setup auction inside `truffle console`:
 
     ```
     truffle(development)> DutchAuction.deployed().then(function(instance) { auction = instance });
-    truffle(development)> auction.setupAuction(ShopToken.address, 10000, 500);
-    truffle(development)> auction.startAuction();
+    truffle(development)> auction.startAuction(ShopToken.address, 10000, 500);
     ```
 
 Start `coinflip` server:
