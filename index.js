@@ -47,6 +47,11 @@ function handleError(request, response, message) {
   response.status(500).send({error: message});  
 }
 
+// Healthcheck
+app.get('/healthcheck', function(req, res) {
+  res.status(200).send({status: "OK"});
+})
+
 // Main handler
 app.post('/bid', function (req, res) {
   // Validate request body or quit
