@@ -28,13 +28,6 @@ Run Truffle migrations in another window:
 
     $ truffle migrate
 
-Setup auction inside `truffle console`:
-
-    ```
-    truffle(development)> DutchAuction.deployed().then(function(instance) { auction = instance });
-    truffle(development)> auction.startAuction(ShopToken.address, 10000, 500);
-    ```
-
 Start `coinflip` server:
 
     $ node index.js
@@ -43,9 +36,9 @@ Perform test request in another window:
 
     ```
     curl -X POST http://localhost:3000/bid \
-    -H 'Content-Type: application/json' \
-    -d '{
-        "transactionID": "f854aebae95150b379cc1187d848d58225f3c4157fe992bcd166f58bd5063449",
-        "beneficiary": "0x1aec491cc146f13f296e7115c21bc6901193240d"
-    }'
+        -H 'Content-Type: application/json' \
+        -d '{
+            "transactionID": "f854aebae95150b379cc1187d848d58225f3c4157fe992bcd166f58bd5063449",
+            "beneficiary": "0x1aec491cc146f13f296e7115c21bc6901193240d"
+        }'
     ```
