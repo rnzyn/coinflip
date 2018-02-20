@@ -12,7 +12,9 @@ Required parameters:
 
 Optional parameters:
 
+* `COINFLIP_DEV` - development mode (doesn't call smart contract, returns dummy response), defaults to `false`.
 * `COINFLIP_PORT` - port to bind, defaults to `3000`.
+* `BLOCKCHAIN_BASE_URL` - [Blockchain.info API](https://blockchain.info/api) base URL, defaults to `https://blockchain.info`
 * `BLOCKCYPHER_BASE_URL` - [BlockCypher API](https://www.blockcypher.com/dev/bitcoin/) base URL, defaults to `https://api.blockcypher.com/v1/btc/main`.
 * `BTC_TX_CONFIRMATIONS` - number of transaction confirmations, defaults to `3`.
 * `ETH_RPC_ADDRESS` - Ethereum RPC address, defaults to `http://localhost:8545`.
@@ -30,7 +32,7 @@ Run Truffle migrations in another window:
 
 Start `coinflip` server:
 
-    $ node index.js
+    $ yarn start
 
 Perform test request in another window:
 
@@ -38,6 +40,7 @@ Perform test request in another window:
     curl -X POST http://localhost:3000/bid \
         -H 'Content-Type: application/json' \
         -d '{
+            "investor": "1GbMfYui17L5m6sAy3L3WXAtf1P32bxJXq",
             "transactionID": "f854aebae95150b379cc1187d848d58225f3c4157fe992bcd166f58bd5063449",
             "beneficiary": "0x1aec491cc146f13f296e7115c21bc6901193240d"
         }'

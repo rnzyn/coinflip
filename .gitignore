@@ -1,3 +1,4 @@
+.DS_Store
 .env
 contract.json
 node_modules/
