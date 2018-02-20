@@ -36,7 +36,6 @@ Start `coinflip` server:
 
 Perform test request in another window:
 
-    ```
     curl -X POST http://localhost:3000/bid \
         -H 'Content-Type: application/json' \
         -d '{
@@ -44,4 +43,3 @@ Perform test request in another window:
             "transactionID": "f854aebae95150b379cc1187d848d58225f3c4157fe992bcd166f58bd5063449",
             "beneficiary": "0x1aec491cc146f13f296e7115c21bc6901193240d"
         }'
-    ```
