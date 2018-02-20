@@ -17,6 +17,7 @@ const bodyParser = require('body-parser');
 // Require internal library objects
 const blockchain = require('./blockchain.js');
 const blockcypher = require('./blockcypher.js');
+const cryptocompare = require('./cryptocompare.js');
 const ethereum = require('./ethereum.js');
 const cfg = require('./config.js');
 const utils = require('./utils.js');
@@ -29,16 +30,20 @@ const contract = new web3.eth.Contract(cfg.CONTRACT_JSON_ABI, cfg.ETH_CONTRACT_A
 const app = express();
 app.use(addRequestId);
 app.use(bodyParser.json());
+app.all('/bid', function(req, res, next) {
+  cryptocompare.syncExchangeRates(req, res, next, cfg.FALLBACK_RATE);
+});
 
 // Healthcheck
 app.get('/healthcheck', function(req, res) {
+  console.log("[%s] Healthcheck requested", req.id);
   res.status(200).send({status: "OK"});
 })
 
 // Main handler
 app.post('/bid', function (req, res) {
   // Validate request body or quit
-  const coinflip = utils.Coinflip(cfg, req, res, contract);
+  const coinflip = utils.Coinflip(cfg, req, res, web3, contract);
   const params = utils.RequestBody(req, web3);
   if (params.error != null) {
     utils.handleError(coinflip, params.error);

@@ -2,6 +2,12 @@
 
 Listens to Bitcoin transactions and calls Ethereum smart contract methods.
 
+Third-party APIs used:
+
+* [BlockCypher](https://www.blockcypher.com/dev/bitcoin)
+* [Blockchain.info](https://blockchain.info/api)
+* [CryptoCompare](https://www.cryptocompare.com/api) - for conversion rates.
+
 # Configuration
 
 Required parameters:
@@ -9,6 +15,8 @@ Required parameters:
 * `BTC_WALLETS` - list of space-separated BTC wallet addresses.
 * `ETH_ACCOUNT_ADDRESS` - address the call transaction should be made from.
 * `ETH_CONTRACT_ADDRESS` - address of the smart contract to call.
+* `FALLBACK_RATE` - fallback for BTCETH conversion rate in case of API failure.
+* `MINIMUM_BID` - minimum bid value in Wei.
 
 Optional parameters:
 

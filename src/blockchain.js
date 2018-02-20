@@ -35,7 +35,7 @@ function handle(coinflip, api, params) {
       if (coinflip.cfg.BTC_WALLETS.includes(txOutput.addr)) {
         foundPayment = true;
         console.log("[%s] Found payment: %s satoshi to %s, calling smart contract", coinflip.req.id, outputValue, txOutput.addr);
-        ethereum.placeBitcoinBid(coinflip, params.beneficiary, 100000);
+        ethereum.placeBitcoinBid(coinflip, params.beneficiary, outputValue);
         break;
       }
     }

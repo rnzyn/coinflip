@@ -1,28 +1,30 @@
 // Load libraries
 const fs = require('fs');
+const BigNumber = require('bignumber.js');
+
+function shouldBe(parameter, message) {
+  if (parameter == null) {
+    console.error(message);
+    process.exit(1);    
+  }
+}
 
 // Define required parameters
 const BTC_WALLETS_LIST = process.env.BTC_WALLETS || null;
 const ETH_CONTRACT_ADDRESS = process.env.ETH_CONTRACT_ADDRESS || null;
 const ETH_ACCOUNT_ADDRESS = process.env.ETH_ACCOUNT_ADDRESS || null;
+const FALLBACK_RATE_RAW = process.env.FALLBACK_RATE || null;
+const MINIMUM_BID = process.env.MINIMUM_BID || null;
 
-// Read Bitcoin wallet list or quit
-if (ETH_ACCOUNT_ADDRESS == null) {
-    console.error("Please define `ETH_ACCOUNT_ADDRESS` environment variable");
-    process.exit(1);    
-}
+// Read defined variables or quit
+shouldBe(BTC_WALLETS_LIST, "Please define `BTC_WALLETS` environment variable");
+shouldBe(ETH_ACCOUNT_ADDRESS, "Please define `ETH_ACCOUNT_ADDRESS` environment variable");
+shouldBe(ETH_CONTRACT_ADDRESS, "Please define `ETH_ACCOUNT_ADDRESS` environment variable");
+shouldBe(FALLBACK_RATE_RAW, "Please define `FALLBACK_RATE` environment variable");
+shouldBe(MINIMUM_BID, "Please define `MINIMUM_BID` environment variable");
 
-// Read Ethereum account address or quit
-if (ETH_ACCOUNT_ADDRESS == null) {
-    console.error("Please define `ETH_ACCOUNT_ADDRESS` environment variable");
-    process.exit(1);    
-}
-
-// Read Ethereum contract address or quit
-if (ETH_CONTRACT_ADDRESS == null) {
-    console.error("Please define `ETH_CONTRACT_ADDRESS` environment variable");
-    process.exit(1);    
-}
+// Parse fallback rate
+const FALLBACK_RATE = new BigNumber(FALLBACK_RATE_RAW);
 
 // Read Bitcoin wallets or quit
 const BTC_WALLETS = BTC_WALLETS_LIST.split(" ");
@@ -55,5 +57,7 @@ module.exports = {
     BLOCKCYPHER_BASE_URL,
     BTC_TX_CONFIRMATIONS,
     ETH_RPC_ADDRESS,
-    CONTRACT_JSON_ABI
+    CONTRACT_JSON_ABI,
+    FALLBACK_RATE,
+    MINIMUM_BID
 }

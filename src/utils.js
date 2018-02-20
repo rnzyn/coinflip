@@ -1,8 +1,9 @@
-function Coinflip(config, request, response, contract) {
+function Coinflip(config, request, response, web3, contract) {
   return {
     cfg: config,
     req: request,
     res: response,
+    web3: web3,    
     contract: contract
   }
 }
