@@ -27,6 +27,7 @@ Optional parameters:
 * `BTC_TX_CONFIRMATIONS` - number of transaction confirmations, defaults to `3`.
 * `ETH_RPC_ADDRESS` - Ethereum RPC address, defaults to `http://localhost:8545`.
 * `ETH_CONTRACT_JSON` - File with JSON interface for the contract to instantiate, defaults to `./contract.json`.
+* `GAS_AMOUNT` - amount of gas to use for proxying transaction, defaults to `130000`.
 
 # Debugging
 

@@ -22,15 +22,15 @@ function placeBitcoinBid(coinflip, beneficiary, bidValue) {
 
   // Check estimate gas for smart contract method
   coinflip.contract.methods.placeBitcoinBid(beneficiary, weiValue).estimateGas({}, function(error, gasAmount) {
-    console.log("Gas amount: %s", gasAmount);
+    console.log("Estimate gas for proxying transaction: %s", gasAmount);
   })
 
   // Call smart contract method
-  const parameters = { from: coinflip.cfg.ETH_ACCOUNT_ADDRESS, gas: 130000 };
+  const parameters = { from: coinflip.cfg.ETH_ACCOUNT_ADDRESS, gas: coinflip.cfg.GAS_AMOUNT };
   coinflip.contract.methods.placeBitcoinBid(beneficiary, bidValue).send(parameters)
     .then(function(result) {
       console.log("[%s] Transaction submitted: %s", coinflip.req.id, result.transactionHash);
-      coinflip.res.status(200).send({transactionID: result.transactionHash});       
+      coinflip.res.status(200).send({transactionID: result.transactionHash});
     })
     .catch(function(error) {
       utils.handleError(coinflip, sprintf("%s", error));

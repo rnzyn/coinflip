@@ -5,7 +5,7 @@ const BigNumber = require('bignumber.js');
 function shouldBe(parameter, message) {
   if (parameter == null) {
     console.error(message);
-    process.exit(1);    
+    process.exit(1);
   }
 }
 
@@ -41,6 +41,7 @@ const BLOCKCYPHER_BASE_URL = process.env.BLOCKCYPHER_BASE_URL || "https://api.bl
 const BTC_TX_CONFIRMATIONS = process.env.BTC_TX_CONFIRMATIONS || 3;
 const ETH_RPC_ADDRESS = process.env.ETH_RPC_ADDRESS || "http://localhost:8545";
 const ETH_CONTRACT_JSON = process.env.ETH_CONTRACT_JSON || "./contract.json";
+const GAS_AMOUNT = process.env.GAS_AMOUNT || 130000;
 
 // Read contract ABI file or quit
 console.info("Loading contract ABI from %s", ETH_CONTRACT_JSON);
@@ -59,5 +60,6 @@ module.exports = {
     ETH_RPC_ADDRESS,
     CONTRACT_JSON_ABI,
     FALLBACK_RATE,
-    MINIMUM_BID
+    MINIMUM_BID,
+    GAS_AMOUNT
 }
