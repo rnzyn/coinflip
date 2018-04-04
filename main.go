@@ -40,7 +40,6 @@ func main() {
 		"contract": contract,
 		"ipc":      ipc,
 		"features": features,
-		"key":      key,
 	}).Info("Coinflip configuration")
 
 	// Create an IPC based RPC connection to a remote node
