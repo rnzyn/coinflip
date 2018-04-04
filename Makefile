@@ -11,6 +11,9 @@ build:
 clean:
 	@rm -rf ./coinflip
 
+dev:
+	geth --datadir /tmp/geth --dev --dev.period 1 --rpc --rpcapi eth,net,personal,web3
+
 install:
 	go get github.com/ethereum/go-ethereum
 	go get github.com/joho/godotenv
@@ -22,4 +25,4 @@ install:
 run:
 	./coinflip
 
-.PHONY: abigen build install clean run
+.PHONY: abigen build clean dev install run

@@ -21,7 +21,7 @@ OSX:
 1. Run private Geth node:
 
     ```
-    $ geth --datadir /tmp/geth --dev --dev.period 1 --rpc --rpcapi eth,net,personal,web3
+    $ make dev
     ```
 
 2. Download, compile and deploy [token-sale](github.com/ShopperShop/token-sale) contracts:
