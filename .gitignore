@@ -1,4 +1,14 @@
-.DS_Store
+# Binaries
+coinflip
+
+# Generated files
+token_sale.abi
+
+# Dependencies
+vendor/
+
+# Environment
 .env
-contract.json
-node_modules/
+
+# OSX
+.DS_Store
