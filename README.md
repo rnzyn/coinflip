@@ -9,7 +9,7 @@ Token sale smart contract interaction. Features:
 * Rewarding Bitcoin donations
 
 <p align="center">
-    <img    src="https://vignette.wikia.nocookie.net/glee/images/d/d5/281735_1342370254-coin-flip.gif.gif/revision/latest?cb=20130929223343">
+    ![Coinflip in a nutshell](media/coinflip.png?raw=true "Coinflip in a nutshell")
 </p>
 
 ## Dependencies
