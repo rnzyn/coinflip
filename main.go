@@ -31,8 +31,7 @@ func main() {
 
 	// Stats feature
 	if coinflip.HasFeature("stats") {
-		g1 := e.Group("/stats")
-		g1.GET("/info", handlers.GetStats)
+		e.GET("/info", handlers.GetStats)
 	}
 
 	// Whitelist feature
