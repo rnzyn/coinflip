@@ -2,15 +2,15 @@
 
 [![CircleCI](https://circleci.com/gh/ShoppersShop/coinflip.svg?style=svg&circle-token=804bc203f4671e3d5bca41a1f207f508677e5bb2)](https://circleci.com/gh/ShoppersShop/coinflip)
 
-<div style="text-align:center">
-    <img src="https://vignette.wikia.nocookie.net/glee/images/d/d5/281735_1342370254-coin-flip.gif.gif/revision/latest?cb=20130929223343">
-</div>
-
 Token sale smart contract interaction. Features:
 
 * Retrieving contract information
 * Managing whitelist
 * Rewarding Bitcoin donations
+
+<p align="center">
+    <img    src="https://vignette.wikia.nocookie.net/glee/images/d/d5/281735_1342370254-coin-flip.gif.gif/revision/latest?cb=20130929223343">
+</p>
 
 ## Dependencies
 
