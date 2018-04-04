@@ -1,4 +1,4 @@
-package main
+package payloads
 
 type WhitelistAdd struct {
 	Addresses []string `json:"addresses"`
