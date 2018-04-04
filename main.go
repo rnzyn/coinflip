@@ -14,16 +14,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-func isInSlice(needle string, haystack []string) bool {
-	for _, item := range haystack {
-		if needle == item {
-			return true
-		}
-	}
-
-	return false
-}
-
 func main() {
 	// Load dotenv
 	godotenv.Load()
