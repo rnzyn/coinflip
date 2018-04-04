@@ -43,7 +43,7 @@ OSX:
     $ make install build
     ```
 
-4. Create `.env` file in Coinflip repo with appropriate values (see also [Private key recovery](https://ethereum.stackexchange.com/a/31175/31032):
+4. Create `.env` file in Coinflip repo with appropriate values (see also [Private key recovery](https://ethereum.stackexchange.com/a/31175/31032)):
 
     ```
     COINFLIP_IPC=/tmp/geth/geth.ipc
