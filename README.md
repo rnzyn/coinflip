@@ -8,9 +8,7 @@ Token sale smart contract interaction. Features:
 * Managing whitelist
 * Rewarding Bitcoin donations
 
-<p align="center">
-    ![Coinflip in a nutshell](media/coinflip.png?raw=true "Coinflip in a nutshell")
-</p>
+![Coinflip in a nutshell](media/coinflip.png?raw=true "Coinflip in a nutshell")
 
 ## Dependencies
 
