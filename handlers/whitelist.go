@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/ShoppersShop/coinflip/core"
@@ -34,7 +35,12 @@ func WhitelistAdd(c echo.Context) error {
 	// Convert raw input to Ethereum addresses
 	addresses := []common.Address{}
 	for _, address := range payload.Addresses {
-		addresses = append(addresses, common.HexToAddress(address))
+		if common.IsHexAddress(address) {
+			addresses = append(addresses, common.HexToAddress(address))
+		} else {
+			err := fmt.Errorf("Invalid Ethereum address provided in payload: %s", address)
+			return ctx.JsonError(err)
+		}
 	}
 
 	// Send transaction
@@ -61,7 +67,12 @@ func WhitelistRemove(c echo.Context) error {
 	// Convert raw input to Ethereum addresses
 	addresses := []common.Address{}
 	for _, address := range payload.Addresses {
-		addresses = append(addresses, common.HexToAddress(address))
+		if common.IsHexAddress(address) {
+			addresses = append(addresses, common.HexToAddress(address))
+		} else {
+			err := fmt.Errorf("Invalid Ethereum address provided in payload: %s", address)
+			return ctx.JsonError(err)
+		}
 	}
 
 	// Send transaction
