@@ -22,10 +22,7 @@ func NewConfig(prefix string) *Config {
 	viper.AutomaticEnv()
 	viper.SetEnvPrefix(prefix)
 	viper.SetDefault("port", "3000")
-	viper.SetDefault("ipc", "")
-	viper.SetDefault("contract", "")
 	viper.SetDefault("features", "stats whitelist bitcoin")
-	viper.SetDefault("key", "")
 
 	// Load configuration variables
 	cfg := new(Config)
@@ -34,6 +31,11 @@ func NewConfig(prefix string) *Config {
 	cfg.IPC = viper.GetString("ipc")
 	cfg.Features = viper.GetStringSlice("features")
 	cfg.Key = viper.GetString("key")
+
+	// Fail fast
+	if cfg.IPC == "" || cfg.Contract == "" || cfg.Key == "" {
+		log.Fatal("Please set all required variables before running")
+	}
 
 	// Print configuration variables
 	log.WithFields(log.Fields{

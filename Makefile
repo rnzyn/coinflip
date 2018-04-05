@@ -15,7 +15,10 @@ deps:
 	go get -u github.com/golang/dep/cmd/dep
 	dep ensure
 
+geth:
+	geth --datadir /tmp/geth --dev --dev.period 1 --rpc --rpcapi eth,net,personal,web3
+
 run:
 	./coinflip
 
-.PHONY: abigen build deps clean run
+.PHONY: abigen build deps geth clean run

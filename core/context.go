@@ -8,7 +8,6 @@ import (
 
 type CoinflipContext struct {
 	echo.Context
-	Coinflip *Coinflip
 }
 
 func (ctx *CoinflipContext) JsonError(err error) error {

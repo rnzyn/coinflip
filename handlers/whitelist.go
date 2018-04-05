@@ -10,10 +10,10 @@ import (
 	"github.com/labstack/echo"
 )
 
-func WhitelistGet(c echo.Context) error {
+func (h *Coinflip) WhitelistGet(c echo.Context) error {
 	ctx := c.(*core.CoinflipContext)
 
-	result, err := ctx.Coinflip.Sale().WhitelistCheck(nil, common.HexToAddress(c.Param("address")))
+	result, err := h.Contract.WhitelistCheck(nil, common.HexToAddress(c.Param("address")))
 	if err != nil {
 		return ctx.JsonError(err)
 	}
@@ -23,7 +23,7 @@ func WhitelistGet(c echo.Context) error {
 	})
 }
 
-func WhitelistAdd(c echo.Context) error {
+func (h *Coinflip) WhitelistPost(c echo.Context) error {
 	ctx := c.(*core.CoinflipContext)
 
 	// Parse payload
@@ -44,7 +44,7 @@ func WhitelistAdd(c echo.Context) error {
 	}
 
 	// Send transaction
-	transaction, err := ctx.Coinflip.Sale().WhitelistAdd(ctx.Coinflip.Auth(), addresses)
+	transaction, err := h.Contract.WhitelistAdd(h.TxOpts, addresses)
 	if err != nil {
 		return ctx.JsonError(err)
 	}
@@ -55,7 +55,7 @@ func WhitelistAdd(c echo.Context) error {
 	})
 }
 
-func WhitelistRemove(c echo.Context) error {
+func (h *Coinflip) WhitelistDelete(c echo.Context) error {
 	ctx := c.(*core.CoinflipContext)
 
 	// Parse payload
@@ -76,7 +76,7 @@ func WhitelistRemove(c echo.Context) error {
 	}
 
 	// Send transaction
-	transaction, err := ctx.Coinflip.Sale().WhitelistRemove(ctx.Coinflip.Auth(), addresses)
+	transaction, err := h.Contract.WhitelistRemove(h.TxOpts, addresses)
 	if err != nil {
 		return ctx.JsonError(err)
 	}

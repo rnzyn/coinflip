@@ -8,16 +8,16 @@ import (
 )
 
 func main() {
-	// Init config & coinflip
+	// Init config & Coinflip handler
 	cfg := core.NewConfig("coinflip")
-	coinflip := core.NewCoinflip(cfg)
+	coinflip := handlers.NewCoinflip(cfg)
 
 	// Init echo
 	e := echo.New()
 	e.HideBanner = true
 	e.Use(func(h echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
-			ctx := &core.CoinflipContext{c, coinflip}
+			ctx := &core.CoinflipContext{c}
 			return h(ctx)
 		}
 	})
@@ -27,23 +27,23 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// Healthcheck route
-	e.GET("/", handlers.Healthcheck)
+	e.GET("/", coinflip.Healthcheck)
 
 	// Stats feature
 	if coinflip.HasFeature("stats") {
-		e.GET("/info", handlers.GetStats)
+		e.GET("/stats", coinflip.StatsGet)
 	}
 
 	// Whitelist feature
 	if coinflip.HasFeature("whitelist") {
-		e.GET("/whitelist/:address", handlers.WhitelistGet)
-		e.POST("/whitelist", handlers.WhitelistAdd)
-		e.DELETE("/whitelist", handlers.WhitelistRemove)
+		e.GET("/whitelist/:address", coinflip.WhitelistGet)
+		e.POST("/whitelist", coinflip.WhitelistPost)
+		e.DELETE("/whitelist", coinflip.WhitelistDelete)
 	}
 
 	// Bitcoin feature
 	if coinflip.HasFeature("bitcoin") {
-		e.POST("/bitcoin", handlers.BitcoinDonation)
+		e.POST("/bitcoin", coinflip.BitcoinDonation)
 	}
 
 	// Start server

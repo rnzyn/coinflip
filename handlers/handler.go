@@ -1,7 +1,8 @@
-package core
+package handlers
 
 import (
 	"github.com/ShoppersShop/coinflip/contracts"
+	"github.com/ShoppersShop/coinflip/core"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
@@ -10,12 +11,12 @@ import (
 )
 
 type Coinflip struct {
-	auth     *bind.TransactOpts
-	sale     *contracts.TokenSale
-	features []string
+	TxOpts   *bind.TransactOpts
+	Contract *contracts.TokenSale
+	Features []string
 }
 
-func NewCoinflip(cfg *Config) *Coinflip {
+func NewCoinflip(cfg *core.Config) *Coinflip {
 	// Create an IPC based RPC connection to a remote node
 	conn, err := ethclient.Dial(cfg.IPC)
 	if err != nil {
@@ -36,22 +37,14 @@ func NewCoinflip(cfg *Config) *Coinflip {
 
 	// Instantiate context
 	flip := new(Coinflip)
-	flip.auth = bind.NewKeyedTransactor(ecdsaKey)
-	flip.sale = sale
-	flip.features = cfg.Features
+	flip.Contract = sale
+	flip.Features = cfg.Features
+	flip.TxOpts = bind.NewKeyedTransactor(ecdsaKey)
 	return flip
 }
 
-func (flip *Coinflip) Auth() *bind.TransactOpts {
-	return flip.auth
-}
-
-func (flip *Coinflip) Sale() *contracts.TokenSale {
-	return flip.sale
-}
-
-func (flip *Coinflip) HasFeature(feature string) bool {
-	for _, item := range flip.features {
+func (h *Coinflip) HasFeature(feature string) bool {
+	for _, item := range h.Features {
 		if feature == item {
 			return true
 		}

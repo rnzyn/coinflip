@@ -7,19 +7,19 @@ import (
 	"github.com/labstack/echo"
 )
 
-func GetStats(c echo.Context) error {
+func (h *Coinflip) StatsGet(c echo.Context) error {
 	ctx := c.(*core.CoinflipContext)
 
 	// Retrieve data from smart contracts
-	active, err := ctx.Coinflip.Sale().IsActiveSale(nil)
-	availableUnits, err := ctx.Coinflip.Sale().AvailableUnits(nil)
-	basePrice, err := ctx.Coinflip.Sale().BasePrice(nil)
-	discountPrice, err := ctx.Coinflip.Sale().DiscountPrice(nil)
-	duration, err := ctx.Coinflip.Sale().Duration(nil)
-	minPayment, err := ctx.Coinflip.Sale().MinPayment(nil)
-	startTime, err := ctx.Coinflip.Sale().StartTime(nil)
-	unitsSold, err := ctx.Coinflip.Sale().UnitsSold(nil)
-	weiReceived, err := ctx.Coinflip.Sale().WeiReceived(nil)
+	active, err := h.Contract.IsActiveSale(nil)
+	availableUnits, err := h.Contract.AvailableUnits(nil)
+	basePrice, err := h.Contract.BasePrice(nil)
+	discountPrice, err := h.Contract.DiscountPrice(nil)
+	duration, err := h.Contract.Duration(nil)
+	minPayment, err := h.Contract.MinPayment(nil)
+	startTime, err := h.Contract.StartTime(nil)
+	unitsSold, err := h.Contract.UnitsSold(nil)
+	weiReceived, err := h.Contract.WeiReceived(nil)
 
 	if err != nil {
 		return ctx.JsonError(err)
