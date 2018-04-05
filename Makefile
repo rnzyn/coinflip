@@ -11,18 +11,11 @@ build:
 clean:
 	@rm -rf ./coinflip
 
-dev:
-	geth --datadir /tmp/geth --dev --dev.period 1 --rpc --rpcapi eth,net,personal,web3
-
-install:
-	go get github.com/ethereum/go-ethereum
-	go get github.com/joho/godotenv
-	go get github.com/labstack/echo/...
-	go get github.com/sirupsen/logrus
-	go get github.com/spf13/viper
-	go install github.com/ethereum/go-ethereum/cmd/abigen
+deps:
+	go get -u github.com/golang/dep/cmd/dep
+	dep ensure
 
 run:
 	./coinflip
 
-.PHONY: abigen build clean dev install run
+.PHONY: abigen build deps clean run

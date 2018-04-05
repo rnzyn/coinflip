@@ -14,14 +14,15 @@ Token sale smart contract interaction. Features:
 
 OSX:
 
-    $ brew install jq
+    $ brew install dep jq
+    $ go install github.com/ethereum/go-ethereum/cmd/abigen
 
 ## Testing
 
 1. Run private Geth node:
 
     ```
-    $ make dev
+    $ geth --datadir /tmp/geth --dev --dev.period 1 --rpc --rpcapi eth,net,personal,web3
     ```
 
 2. Download, compile and deploy [token-sale](github.com/ShopperShop/token-sale) contracts:

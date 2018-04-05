@@ -7,8 +7,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Deps
-          command: make install
+          name: Install Dependencies
+          command: make deps
       - run:
           name: Compile
           command: make build
