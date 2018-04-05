@@ -6,12 +6,10 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/labstack/echo"
 	log "github.com/sirupsen/logrus"
 )
 
 type Coinflip struct {
-	echo.Context
 	auth     *bind.TransactOpts
 	sale     *contracts.TokenSale
 	features []string
