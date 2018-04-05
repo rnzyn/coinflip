@@ -30,8 +30,9 @@ OSX:
     ```
     $ go get github.com/ShopperShop/token-sale
     $ cd $GOPATH/src/github.com/ShoppersShop/token-sale
-    $ truffle compile
-    $ truffle migrate
+    $ yarn install
+    $ yarn run compile
+    $ yarn run migrate
     ```
 
 3. Download and build Coinflip:
