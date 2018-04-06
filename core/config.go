@@ -12,7 +12,7 @@ type Config struct {
 	Features             []string
 	HttpClientDebug      bool
 	GethIPC              string
-	GethPrivateKey       string
+	EthPrivateKey        string
 	ContractAddress      string
 	BlockchainInfoApiKey string
 	BitcoinAccountXpub   string
@@ -47,9 +47,9 @@ func NewConfig(prefix string) *Config {
 		log.Fatalf("Please set mandatory `CF_GETH_IPC` configuration variable")
 	}
 
-	cfg.GethPrivateKey = viper.GetString("geth_private_key")
-	if cfg.GethPrivateKey == "" {
-		log.Fatalf("Please set mandatory `CF_GETH_PRIVATE_KEY` configuration variable")
+	cfg.EthPrivateKey = viper.GetString("eth_private_key")
+	if cfg.EthPrivateKey == "" {
+		log.Fatalf("Please set mandatory `CF_ETH_PRIVATE_KEY` configuration variable")
 	}
 
 	cfg.ContractAddress = viper.GetString("contract_address")

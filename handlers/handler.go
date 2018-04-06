@@ -38,9 +38,9 @@ func NewCoinflip(cfg *core.Config) *Coinflip {
 	}
 
 	// Load private key
-	ecdsaKey, err := crypto.HexToECDSA(cfg.GethPrivateKey)
+	ecdsaKey, err := crypto.HexToECDSA(cfg.EthPrivateKey)
 	if err != nil {
-		log.Fatalf("Failure: %v", err)
+		log.Fatalf("Failed to load private key: %v", err)
 	}
 
 	// Instantiate handler
