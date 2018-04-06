@@ -21,7 +21,7 @@ OSX:
 
 Required configuration options:
 
-| Option                       | Description                               |
+| Name                         | Description                               |
 |------------------------------|-------------------------------------------|
 | `CF_DOMAIN`                  | Domain name where Coinflip is deployed    |
 | `CF_GETH_IPC`                | Absolute path to Geth IPC interface       |
@@ -33,7 +33,7 @@ Required configuration options:
 
 Optional configuration options:
 
-| Option                 | Description                  | Default value             |
+| Name                   | Description                  | Default value             |
 |------------------------|------------------------------|---------------------------|
 | `CF_PORT`              | Port number to bind on       | `3000`                    |
 | `CF_HTTP_CLIENT_DEBUG` | Dump outgoing HTTP requests  | `false`                   |
