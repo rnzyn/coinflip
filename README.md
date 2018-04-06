@@ -24,7 +24,7 @@ Required configuration options:
 | Name                         | Description                            |
 |------------------------------|----------------------------------------|
 | `CF_DOMAIN`                  | Domain name where Coinflip is deployed |
-| `CF_GETH_IPC`                | Absolute path to Geth IPC interface    |
+| `CF_GETH_IPC_PATH`           | Absolute path to Geth IPC interface    |
 | `CF_ETH_PRIVATE_KEY`         | Ethereum account Secp256k1 private key |
 | `CF_CONTRACT_ADDRESS`        | Token sale smart contract address      |
 | `CF_BLOCKCHAIN_INFO_API_KEY` | Blockchain.info API key                |

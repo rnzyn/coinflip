@@ -11,7 +11,7 @@ type Config struct {
 	Port                 string
 	Features             []string
 	HttpClientDebug      bool
-	GethIPC              string
+	GethIpcPath          string
 	EthPrivateKey        string
 	ContractAddress      string
 	BlockchainInfoApiKey string
@@ -42,8 +42,8 @@ func NewConfig(prefix string) *Config {
 		log.Fatalf("Please set mandatory `CF_DOMAIN` configuration variable")
 	}
 
-	cfg.GethIPC = viper.GetString("geth_ipc")
-	if cfg.GethIPC == "" {
+	cfg.GethIpcPath = viper.GetString("geth_ipc")
+	if cfg.GethIpcPath == "" {
 		log.Fatalf("Please set mandatory `CF_GETH_IPC` configuration variable")
 	}
 
@@ -78,7 +78,7 @@ func NewConfig(prefix string) *Config {
 		"port":                 cfg.Port,
 		"http_client_debug":    cfg.HttpClientDebug,
 		"features":             cfg.Features,
-		"geth_ipc":             cfg.GethIPC,
+		"geth_ipc_path":        cfg.GethIpcPath,
 		"contract_address":     cfg.ContractAddress,
 		"bitcoin_xpub_key":     cfg.BitcoinAccountXpub,
 		"btceth_fallback_rate": cfg.BtcEthFallbackRate,

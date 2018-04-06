@@ -26,7 +26,7 @@ func NewCoinflip(cfg *core.Config) *Coinflip {
 	})
 
 	// Create an IPC based RPC connection to a remote node
-	conn, err := ethclient.Dial(cfg.GethIPC)
+	conn, err := ethclient.Dial(cfg.GethIpcPath)
 	if err != nil {
 		log.Fatalf("Failed to connect to the Ethereum client: %s", err)
 	}
