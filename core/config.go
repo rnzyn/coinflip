@@ -1,6 +1,8 @@
 package core
 
 import (
+	"strings"
+
 	"github.com/joho/godotenv"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -26,62 +28,69 @@ func NewConfig(prefix string) *Config {
 	// Viper instance
 	viper.AutomaticEnv()
 	viper.SetEnvPrefix(prefix)
-	viper.SetDefault("port", "3000")
-	viper.SetDefault("http_client_debug", false)
-	viper.SetDefault("features", "stats whitelist bitcoin")
+	viper.SetDefault(ConfigOptionPort, "3000")
+	viper.SetDefault(ConfigOptionHttpClientDebug, false)
+	viper.SetDefault(ConfigOptionFeatures, "stats whitelist bitcoin")
 
 	// Load configuration variables
 	cfg := new(Config)
-	cfg.Port = viper.GetString("port")
-	cfg.Features = viper.GetStringSlice("features")
-	cfg.HttpClientDebug = viper.GetBool("http_client_debug")
+	cfg.Port = viper.GetString(ConfigOptionPort)
+	cfg.Features = viper.GetStringSlice(ConfigOptionFeatures)
+	cfg.HttpClientDebug = viper.GetBool(ConfigOptionHttpClientDebug)
 
 	// Fail fast
-	cfg.Domain = viper.GetString("domain")
+	cfg.Domain = viper.GetString(ConfigOptionDomain)
 	if cfg.Domain == "" {
-		log.Fatalf("Please set mandatory `CF_DOMAIN` configuration variable")
+		option := strings.ToUpper(prefix + "_" + ConfigOptionDomain)
+		log.Fatalf("Please set mandatory `%s` configuration variable", option)
 	}
 
-	cfg.GethIpcPath = viper.GetString("geth_ipc")
+	cfg.GethIpcPath = viper.GetString(ConfigOptionGethIpcPath)
 	if cfg.GethIpcPath == "" {
-		log.Fatalf("Please set mandatory `CF_GETH_IPC` configuration variable")
+		option := strings.ToUpper(prefix + "_" + ConfigOptionGethIpcPath)
+		log.Fatalf("Please set mandatory `%s` configuration variable", option)
 	}
 
-	cfg.EthPrivateKey = viper.GetString("eth_private_key")
+	cfg.EthPrivateKey = viper.GetString(ConfigOptionEthPrivateKey)
 	if cfg.EthPrivateKey == "" {
-		log.Fatalf("Please set mandatory `CF_ETH_PRIVATE_KEY` configuration variable")
+		option := strings.ToUpper(prefix + "_" + ConfigOptionEthPrivateKey)
+		log.Fatalf("Please set mandatory `%s` configuration variable", option)
 	}
 
-	cfg.ContractAddress = viper.GetString("contract_address")
+	cfg.ContractAddress = viper.GetString(ConfigOptionContractAddress)
 	if cfg.ContractAddress == "" {
-		log.Fatalf("Please set mandatory `CF_CONTRACT_ADDRESS` configuration variable")
+		option := strings.ToUpper(prefix + "_" + ConfigOptionContractAddress)
+		log.Fatalf("Please set mandatory `%s` configuration variable", option)
 	}
 
-	cfg.BlockchainInfoApiKey = viper.GetString("blockchain_info_api_key")
+	cfg.BlockchainInfoApiKey = viper.GetString(ConfigOptionBlockchainInfoApiKey)
 	if cfg.BlockchainInfoApiKey == "" {
-		log.Fatalf("Please set mandatory `CF_BLOCKCHAIN_INFO_API_KEY` configuration variable")
+		option := strings.ToUpper(prefix + "_" + ConfigOptionBlockchainInfoApiKey)
+		log.Fatalf("Please set mandatory `%s` configuration variable", option)
 	}
 
-	cfg.BitcoinAccountXpub = viper.GetString("bitcoin_account_xpub")
+	cfg.BitcoinAccountXpub = viper.GetString(ConfigOptionBitcoinAccountXpub)
 	if cfg.BitcoinAccountXpub == "" {
-		log.Fatalf("Please set mandatory `CF_BITCOIN_ACCOUNT_XPUB` configuration variable")
+		option := strings.ToUpper(prefix + "_" + ConfigOptionBitcoinAccountXpub)
+		log.Fatalf("Please set mandatory `%s` configuration variable", option)
 	}
 
-	cfg.BtcEthFallbackRate = viper.GetFloat64("btceth_fallback_rate")
+	cfg.BtcEthFallbackRate = viper.GetFloat64(ConfigOptionBtcEthFallbackRate)
 	if cfg.BtcEthFallbackRate == 0 {
-		log.Fatalf("Please set mandatory `CF_BTCETH_FALLBACK_RATE` configuration variable")
+		option := strings.ToUpper(prefix + "_" + ConfigOptionDomain)
+		log.Fatalf("Please set mandatory `%s` configuration variable", option)
 	}
 
 	// Print configuration variables
 	log.WithFields(log.Fields{
-		"domain":               cfg.Domain,
-		"port":                 cfg.Port,
-		"http_client_debug":    cfg.HttpClientDebug,
-		"features":             cfg.Features,
-		"geth_ipc_path":        cfg.GethIpcPath,
-		"contract_address":     cfg.ContractAddress,
-		"bitcoin_xpub_key":     cfg.BitcoinAccountXpub,
-		"btceth_fallback_rate": cfg.BtcEthFallbackRate,
+		ConfigOptionDomain:             cfg.Domain,
+		ConfigOptionPort:               cfg.Port,
+		ConfigOptionHttpClientDebug:    cfg.HttpClientDebug,
+		ConfigOptionFeatures:           cfg.Features,
+		ConfigOptionGethIpcPath:        cfg.GethIpcPath,
+		ConfigOptionContractAddress:    cfg.ContractAddress,
+		ConfigOptionBitcoinAccountXpub: cfg.BitcoinAccountXpub,
+		ConfigOptionBtcEthFallbackRate: cfg.BtcEthFallbackRate,
 	}).Info("Coinflip configuration")
 
 	return cfg
