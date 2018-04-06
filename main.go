@@ -9,7 +9,7 @@ import (
 
 func main() {
 	// Init config & Coinflip handler
-	cfg := core.NewConfig("coinflip")
+	cfg := core.NewConfig("cf")
 	coinflip := handlers.NewCoinflip(cfg)
 
 	// Init echo
@@ -43,7 +43,8 @@ func main() {
 
 	// Bitcoin feature
 	if coinflip.HasFeature("bitcoin") {
-		e.POST("/bitcoin", coinflip.BitcoinDonation)
+		e.GET("/bitcoin/log", coinflip.BitcoinCallbackLog)
+		e.GET("/bitcoin/gap", coinflip.BitcoinCheckGap)
 	}
 
 	// Start server

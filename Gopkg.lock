@@ -14,6 +14,12 @@
   revision = "2be2f12b358dc57d70b8f501b00be450192efbc3"
 
 [[projects]]
+  name = "github.com/ddliu/go-httpclient"
+  packages = ["."]
+  revision = "72917d81d0423a6235790470d15a4d099e3490f9"
+  version = "v0.5.1"
+
+[[projects]]
   name = "github.com/dgrijalva/jwt-go"
   packages = ["."]
   revision = "06ea1031745cb8b3dab3f6a236daf2b0aa468b7e"
@@ -304,6 +310,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "185a8df89160a85361cec9a099134fb57482a3cf9f1c1428f83e30e72f8ad7cc"
+  inputs-digest = "ebefabd797773a8f05705d49d0a6ccd7cb779fcf68082f8b8927dde73a678b1a"
   solver-name = "gps-cdcl"
   solver-version = 1
