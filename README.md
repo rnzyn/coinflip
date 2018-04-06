@@ -21,19 +21,23 @@ OSX:
 
 Required configuration options:
 
-* `CF_DOMAIN` - domain name where Coinflip will be deployed, required for callbacks.
-* `CF_GETH_IPC` - absolute path to `geth` IPC interface.
-* `CF_GETH_PRIVATE_KEY` - Ethereum Secp256k1 private key, used by `geth`, see [Private key recovery](https://ethereum.stackexchange.com/a/31175/31032).
-* `CF_CONTRACT_ADDRESS` - Token sale smart contract address in Ethereum blockchain.
-* `CF_BLOCKCHAIN_INFO_API_KEY` - [Blockchain.info API](https://blockchain.info/api) key.
-* `CF_BITCOIN_ACCOUNT_XPUB` - BIP-32 account extended public key (xPub).
-* `CF_BTCETH_FALLBACK_RATE` - `BTCETH` fallback conversion rate, in case [CryptoCompare API](https://www.cryptocompare.com/api) is down. Should be valid `float64` value.
+| Option                       | Description                               |
+|------------------------------|-------------------------------------------|
+| `CF_DOMAIN`                  | Domain name where Coinflip is deployed    |
+| `CF_GETH_IPC`                | Absolute path to `geth` IPC interface     |
+| `CF_GETH_PRIVATE_KEY`        | Ethereum account Secp256k1 private key    |
+| `CF_CONTRACT_ADDRESS`        | Token sale smart contract address         |
+| `CF_BLOCKCHAIN_INFO_API_KEY` | Blockchain.info API key                   |
+| `CF_BITCOIN_ACCOUNT_XPUB`    | BIP-32 account extended public key (xPub) |
+| `CF_BTCETH_FALLBACK_RATE`    | `BTCETH` pair fallback conversion rate    |
 
 Optional configuration options:
 
-* `CF_PORT` - port number to bind on, defaults to `3000`.
-* `CF_HTTP_CLIENT_DEBUG` - whether to dump outgoing HTTP requests or not, `false` by default.
-* `CF_FEATURES` - space-separated features list, default: `stats bitcoin whitelist`.
+| Option                 | Description                   | Default value             |
+|------------------------|-------------------------------|---------------------------|
+| `CF_PORT`              | Port number to bind on        | `3000`                    |
+| `CF_HTTP_CLIENT_DEBUG` | Dump outgoing HTTP requests   | `false`                   |
+| `CF_FEATURES`          | Space-separated features list | `stats bitcoin whitelist` |
 
 ## Testing
 
