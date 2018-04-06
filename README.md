@@ -33,11 +33,11 @@ Required configuration options:
 
 Optional configuration options:
 
-| Option                 | Description                   | Default value             |
-|------------------------|-------------------------------|---------------------------|
-| `CF_PORT`              | Port number to bind on        | `3000`                    |
-| `CF_HTTP_CLIENT_DEBUG` | Dump outgoing HTTP requests   | `false`                   |
-| `CF_FEATURES`          | Space-separated features list | `stats bitcoin whitelist` |
+| Option                 | Description                  | Default value             |
+|------------------------|------------------------------|---------------------------|
+| `CF_PORT`              | Port number to bind on       | `3000`                    |
+| `CF_HTTP_CLIENT_DEBUG` | Dump outgoing HTTP requests  | `false`                   |
+| `CF_FEATURES`          | Space-separated feature list | `stats bitcoin whitelist` |
 
 ## Testing
 
