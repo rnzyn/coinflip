@@ -37,6 +37,10 @@
   name = "github.com/joho/godotenv"
   version = "1.2.0"
 
+[[projects]]
+  name = "github.com/jinzhu/gorm"
+  version = "1.9.1"
+
 [[constraint]]
   name = "github.com/labstack/echo"
   version = "3.3.4"
@@ -48,6 +52,10 @@
 [[constraint]]
   name = "github.com/spf13/viper"
   version = "1.0.2"
+
+[[constraint]]
+  name = "github.com/shopspring/decimal"
+  version = "1.0.1"
 
 [prune]
   go-tests = true

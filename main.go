@@ -15,16 +15,13 @@ func main() {
 	// Init echo
 	e := echo.New()
 	e.HideBanner = true
+	e.Use(middleware.Logger())
 	e.Use(func(h echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			ctx := &core.CoinflipContext{c}
 			return h(ctx)
 		}
 	})
-
-	// Configure middleware
-	e.Use(middleware.Logger())
-	e.Use(middleware.Recover())
 
 	// Healthcheck route
 	e.GET("/", coinflip.Healthcheck)

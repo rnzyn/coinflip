@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"math/big"
@@ -9,8 +10,11 @@ import (
 
 	"github.com/ShoppersShop/coinflip/core"
 	"github.com/ShoppersShop/coinflip/models"
+	"github.com/ShoppersShop/coinflip/responses"
+	httpclient "github.com/ddliu/go-httpclient"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/labstack/echo"
+	"github.com/shopspring/decimal"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -30,7 +34,7 @@ func (h *Coinflip) BlockchainCallback(c echo.Context) error {
 	}
 
 	// Parse transfer value
-	value, err := strconv.ParseInt(c.QueryParam("value"), 10, 64)
+	value, err := decimal.NewFromString(c.QueryParam("value"))
 	if err != nil {
 		return ctx.JsonError(err)
 	}
@@ -42,25 +46,56 @@ func (h *Coinflip) BlockchainCallback(c echo.Context) error {
 		return ctx.JsonError(errors.New(core.ErrTransferNotFound))
 	}
 
-	// Calculate value in wei
-	bitcoinValue := float64(value) / core.OneBitcoinInSatoshi
-	etherValue := float64(bitcoinValue) * h.Config.BtcEthFallbackRate
-	weiValue := etherValue * core.OneEtherInWei
-	floatValue := big.NewFloat(weiValue).Text('g', 20)
-	transferValue, success := new(big.Int).SetString(floatValue, 10)
-	if !success {
-		return ctx.JsonError(fmt.Errorf(core.ErrBtcEthConversionFailure, value))
+	// Retrieve currency conversion rate
+	cryptoCompareFailure := false
+	requestUrl := core.CryptoCompareBaseUrl + core.CryptoCompareBtcEthRate
+	res, err := httpclient.Get(requestUrl)
+	if err != nil {
+		cryptoCompareFailure = true
+		log.Errorf("Error during CryptoCompare API request: %s", err.Error())
 	}
+
+	// Read response body
+	bodyBytes, err := res.ReadAll()
+	if err != nil {
+		cryptoCompareFailure = true
+		log.Errorf("Error during CryptoCompare response read: %s", err.Error())
+	}
+
+	// Unmarshal response
+	response := responses.CryptoCompareBtcEthRate{}
+	err = json.Unmarshal(bodyBytes, &response)
+	if err != nil {
+		cryptoCompareFailure = true
+		log.Errorf("Error during CryptoCompare response decode: %s", err.Error())
+	}
+
+	// Figure out which rate to use
+	cryptoCompareRate := decimal.NewFromFloatWithExponent(response.ETH, -2)
+	exchangeRate := h.Config.BtcEthFallbackRate
+	if !cryptoCompareFailure && cryptoCompareRate.GreaterThan(core.Zero) {
+		log.WithFields(log.Fields{"rate": cryptoCompareRate}).Info("Successfully fetched exchange rate")
+		exchangeRate = cryptoCompareRate
+	}
+
+	// Calculate value in wei
+	bitcoinValue := value.Div(core.OneBitcoinInSatoshi)
+	etherValue := bitcoinValue.Mul(exchangeRate)
+	weiValue := etherValue.Mul(core.OneEtherInWei)
+	transferValue, success := new(big.Int).SetString(weiValue.String(), 10)
 
 	// Debug calculations
 	log.WithFields(log.Fields{
-		"satoshi":  value,
-		"bitcoin":  bitcoinValue,
-		"ether":    etherValue,
-		"wei":      weiValue,
-		"float":    floatValue,
+		"satoshi":  value.String(),
+		"bitcoin":  bitcoinValue.String(),
+		"ether":    etherValue.String(),
+		"wei":      weiValue.String(),
 		"transfer": transferValue,
 	}).Info("Calculating transfer value")
+
+	if !success {
+		return ctx.JsonError(fmt.Errorf(core.ErrBtcEthConversionFailure, value.String()))
+	}
 
 	// Call smart contract
 	beneficiary := common.HexToAddress(transfer.Beneficiary)
@@ -73,10 +108,10 @@ func (h *Coinflip) BlockchainCallback(c echo.Context) error {
 	tx := h.Database.Begin()
 
 	// Update transfer
-	transfer.Rate = h.Config.BtcEthFallbackRate
+	transfer.Rate = exchangeRate.String()
 	transfer.TxIn = c.QueryParam("transaction_hash")
 	transfer.TxOut = transaction.Hash().String()
-	transfer.ValueIn = strconv.FormatInt(value, 10)
+	transfer.ValueIn = value.String()
 	transfer.ValueOut = transferValue.String()
 	if err := h.Database.Save(&transfer).Error; err != nil {
 		tx.Rollback()

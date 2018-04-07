@@ -1,5 +1,9 @@
 package core
 
+import (
+	"github.com/shopspring/decimal"
+)
+
 // Common options
 const (
 	HealthcheckResponse = "OK"
@@ -10,8 +14,12 @@ const (
 	Confirmations            = 3
 	BlockchainInfoCallbackOk = "*ok*"
 	Bip44AddressLimit        = 20
-	OneBitcoinInSatoshi      = 100000000
-	OneEtherInWei            = 1e+18
+)
+
+var (
+	Zero                = decimal.New(0, 0)
+	OneBitcoinInSatoshi = decimal.New(int64(1e+8), 0)
+	OneEtherInWei       = decimal.New(int64(1e+18), 0)
 )
 
 // Configuration options

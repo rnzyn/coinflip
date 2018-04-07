@@ -115,5 +115,6 @@ func (h *Coinflip) BlockchainReceive(c echo.Context) error {
 
 	// Commit transaction
 	tx.Commit()
+	address.Transfers = append(address.Transfers, transfer)
 	return ctx.JSON(http.StatusOK, address)
 }

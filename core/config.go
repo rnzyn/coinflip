@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/joho/godotenv"
+	"github.com/shopspring/decimal"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 )
@@ -18,7 +19,7 @@ type Config struct {
 	EthPrivateKey        string
 	ContractAddress      string
 	BlockchainInfoApiKey string
-	BtcEthFallbackRate   float64
+	BtcEthFallbackRate   decimal.Decimal
 }
 
 func NewConfig(prefix string) *Config {
@@ -75,10 +76,9 @@ func NewConfig(prefix string) *Config {
 		log.Fatalf(ErrConfigOptionRequired, option)
 	}
 
-	cfg.BtcEthFallbackRate = viper.GetFloat64(ConfigOptionBtcEthFallbackRate)
-	if cfg.BtcEthFallbackRate == 0 {
-		option := strings.ToUpper(prefix + "_" + ConfigOptionDomain)
-		log.Fatalf(ErrConfigOptionRequired, option)
+	fallbackRate, err := decimal.NewFromString(viper.GetString(ConfigOptionBtcEthFallbackRate))
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	// Print configuration variables
@@ -93,5 +93,6 @@ func NewConfig(prefix string) *Config {
 		ConfigOptionBtcEthFallbackRate: cfg.BtcEthFallbackRate,
 	}).Info("Coinflip configuration")
 
+	cfg.BtcEthFallbackRate = fallbackRate
 	return cfg
 }

@@ -17,5 +17,5 @@ const (
 	ErrNoAvailableAccountsFound  = "No available accounts found"
 	ErrTransferNotFound          = "Transfer not found"
 	ErrTransferNotFoundCompleted = "Transfer not found or completed"
-	ErrBtcEthConversionFailure   = "Failed converting %d satoshi to wei"
+	ErrBtcEthConversionFailure   = "Failed converting %s satoshi to wei"
 )
