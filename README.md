@@ -1,6 +1,6 @@
 # Coinflip
 
-[![CircleCI](https://circleci.com/gh/ShoppersShop/coinflip.svg?style=svg&circle-token=804bc203f4671e3d5bca41a1f207f508677e5bb2)](https://circleci.com/gh/ShoppersShop/coinflip) [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/090c7a215e2b9f2c037a)
+[![CircleCI](https://circleci.com/gh/ShoppersShop/coinflip.svg?style=svg&circle-token=804bc203f4671e3d5bca41a1f207f508677e5bb2)](https://circleci.com/gh/ShoppersShop/coinflip)
 
 Token sale smart contract interaction. Features:
 
@@ -67,9 +67,12 @@ Optional configuration options:
 
 4. Create `.env` file in Coinflip repo with proper [configuration values](#configuration).
 
-5. Run and query Coinflip:
+5. Run Coinflip:
 
     ```
     $ make run
-    $ curl -XGET http://localhost:3000/stats
     ```
+
+6. Query with Postman:
+
+    [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/090c7a215e2b9f2c037a)
