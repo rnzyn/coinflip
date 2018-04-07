@@ -35,8 +35,10 @@ func NewCoinflip(cfg *core.Config) *Coinflip {
 		log.Fatalf(core.ErrDbConnFailure, err)
 	}
 
-	// Perform auto migrations
+	// Configure database handler
 	db.LogMode(cfg.Debug)
+
+	// Auto-migrate
 	db.AutoMigrate(&models.Account{}, &models.Address{}, &models.Transfer{})
 
 	// Create an IPC based RPC connection to a remote node

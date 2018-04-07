@@ -9,6 +9,7 @@ import (
 
 	"github.com/ShoppersShop/coinflip/core"
 	"github.com/ShoppersShop/coinflip/models"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/labstack/echo"
 	log "github.com/sirupsen/logrus"
 )
@@ -62,11 +63,11 @@ func (h *Coinflip) BlockchainCallback(c echo.Context) error {
 	}).Info("Calculating transfer value")
 
 	// Call smart contract
-	// beneficiary := common.HexToAddress(transfer.Beneficiary)
-	// transaction, err := h.Contract.BuyTokensBTC(h.TxOpts, beneficiary, transferValue)
-	// if err != nil {
-	// 	return ctx.JsonError(err)
-	// }
+	beneficiary := common.HexToAddress(transfer.Beneficiary)
+	transaction, err := h.Contract.BuyTokensBTC(h.TxOpts, beneficiary, transferValue)
+	if err != nil {
+		return ctx.JsonError(err)
+	}
 
 	// Begin transaction
 	tx := h.Database.Begin()
@@ -74,7 +75,7 @@ func (h *Coinflip) BlockchainCallback(c echo.Context) error {
 	// Update transfer
 	transfer.Rate = h.Config.BtcEthFallbackRate
 	transfer.TxIn = c.QueryParam("transaction_hash")
-	//transfer.TxOut = transaction.Hash().String()
+	transfer.TxOut = transaction.Hash().String()
 	transfer.ValueIn = strconv.FormatInt(value, 10)
 	transfer.ValueOut = transferValue.String()
 	if err := h.Database.Save(&transfer).Error; err != nil {

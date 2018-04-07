@@ -36,6 +36,15 @@ func (h *Coinflip) BlockchainReceive(c echo.Context) error {
 		return ctx.JsonError(fmt.Errorf(core.ErrInvalidEthereumAddress, payload.Beneficiary))
 	}
 
+	// Check if beneficiary already has pending transfer
+	transfer := models.Transfer{}
+	if !h.Database.Preload("Address").Where("beneficiary = ?", payload.Beneficiary).First(&transfer).RecordNotFound() {
+		if transfer.Address == nil {
+			return ctx.JsonError(errors.New(core.ErrUnknown))
+		}
+		return ctx.JSON(http.StatusOK, transfer.Address)
+	}
+
 	// Generate invoice ID
 	invoiceID := uuid.NewV4()
 
@@ -92,7 +101,7 @@ func (h *Coinflip) BlockchainReceive(c echo.Context) error {
 	}
 
 	// Create new transfer
-	transfer := models.Transfer{
+	transfer = models.Transfer{
 		InvoiceID:   invoiceID.String(),
 		Beneficiary: payload.Beneficiary,
 		AddressID:   address.ID,
