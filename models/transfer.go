@@ -1,12 +1,7 @@
 package models
 
-import "time"
-
-type Status int
-
-const (
-	StatusPending Status = iota
-	StatusDone
+import (
+	"time"
 )
 
 type Transfer struct {
