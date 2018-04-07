@@ -25,7 +25,7 @@ func (h *Coinflip) WhitelistDelete(c echo.Context) error {
 		if common.IsHexAddress(address) {
 			addresses = append(addresses, common.HexToAddress(address))
 		} else {
-			err := fmt.Errorf("Invalid Ethereum address provided in payload: %s", address)
+			err := fmt.Errorf(core.ErrInvalidEthereumAddress, address)
 			return ctx.JsonError(err)
 		}
 	}

@@ -31,20 +31,25 @@ func main() {
 
 	// Stats feature
 	if coinflip.HasFeature("stats") {
-		e.GET("/stats", coinflip.StatsGet)
+		g1 := e.Group("stats")
+		g1.GET("", coinflip.StatsGet)
 	}
 
 	// Whitelist feature
 	if coinflip.HasFeature("whitelist") {
-		e.GET("/whitelist/:address", coinflip.WhitelistGet)
-		e.POST("/whitelist", coinflip.WhitelistPost)
-		e.DELETE("/whitelist", coinflip.WhitelistDelete)
+		g2 := e.Group("whitelist")
+		g2.GET("/:address", coinflip.WhitelistGet)
+		g2.POST("", coinflip.WhitelistPost)
+		g2.DELETE("", coinflip.WhitelistDelete)
 	}
 
-	// Bitcoin feature
-	if coinflip.HasFeature("bitcoin") {
-		e.GET("/bitcoin/log", coinflip.BitcoinCallbackLog)
-		e.GET("/bitcoin/gap", coinflip.BitcoinCheckGap)
+	// Blockchain.info feature
+	if coinflip.HasFeature("blockchain") {
+		g3 := e.Group("blockchain")
+		g3.POST("/receive", coinflip.BlockchainReceive)
+		g3.GET("/callback", coinflip.BlockchainCallback)
+		g3.GET("/callback/logs", coinflip.BlockchainCallbackLogs)
+		g3.GET("/gap/:xpub", coinflip.BlockchainGapCheck)
 	}
 
 	// Start server

@@ -5,19 +5,19 @@ import (
 	"net/http"
 
 	"github.com/ShoppersShop/coinflip/core"
-	"github.com/ShoppersShop/coinflip/payloads"
+	"github.com/ShoppersShop/coinflip/responses"
 	httpclient "github.com/ddliu/go-httpclient"
 	"github.com/labstack/echo"
 )
 
-func (h *Coinflip) BitcoinCallbackLog(c echo.Context) error {
+func (h *Coinflip) BlockchainGapCheck(c echo.Context) error {
 	ctx := c.(*core.CoinflipContext)
 
 	// Perform API request
-	requestUrl := core.BlockchainInfoBaseUrl + core.BlockchainInfoCallbackLog
+	requestUrl := core.BlockchainInfoBaseUrl + core.BlockchainInfoAddressGap
 	res, err := httpclient.Get(requestUrl, map[string]string{
-		"key":      h.Config.BlockchainInfoApiKey,
-		"callback": ctx.QueryParam("callback"),
+		"key":  h.Config.BlockchainInfoApiKey,
+		"xpub": c.Param("xpub"),
 	})
 
 	if err != nil {
@@ -31,7 +31,7 @@ func (h *Coinflip) BitcoinCallbackLog(c echo.Context) error {
 	}
 
 	// Unmarshal response
-	response := []payloads.BlockchainCallback{}
+	response := responses.BlockchainInfoGap{}
 	err = json.Unmarshal(bodyBytes, &response)
 	if err != nil {
 		return ctx.JsonError(err)

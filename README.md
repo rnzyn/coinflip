@@ -24,20 +24,20 @@ Required configuration options:
 | Name                         | Description                            |
 |------------------------------|----------------------------------------|
 | `CF_DOMAIN`                  | Domain name where Coinflip is deployed |
+| `CF_DATABASE`                | Database connection string             |
 | `CF_GETH_IPC_PATH`           | Absolute path to Geth IPC interface    |
 | `CF_ETH_PRIVATE_KEY`         | Ethereum account Secp256k1 private key |
 | `CF_CONTRACT_ADDRESS`        | Token sale smart contract address      |
 | `CF_BLOCKCHAIN_INFO_API_KEY` | Blockchain.info API key                |
-| `CF_BITCOIN_ACCOUNT_XPUB`    | BIP-32 account extended public key     |
 | `CF_BTCETH_FALLBACK_RATE`    | BTCETH pair fallback conversion rate   |
 
 Optional configuration options:
 
-| Name                   | Description                  | Default value             |
-|------------------------|------------------------------|---------------------------|
-| `CF_PORT`              | Port number to bind on       | `3000`                    |
-| `CF_HTTP_CLIENT_DEBUG` | Dump outgoing HTTP requests  | `false`                   |
-| `CF_FEATURES`          | Space-separated feature list | `stats bitcoin whitelist` |
+| Name          | Description                  | Default value                |
+|---------------|------------------------------|------------------------------|
+| `CF_DEBUG`    | Debug mode (HTTP, SQL)       | `false`                      |
+| `CF_PORT`     | Port number to bind on       | `3000`                       |
+| `CF_FEATURES` | Space-separated feature list | `stats blockchain whitelist` |
 
 ## Testing
 
