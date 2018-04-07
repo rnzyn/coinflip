@@ -91,6 +91,12 @@
   revision = "ef8a98b0bbce4a65b5aa4c368430a80ddc533168"
 
 [[projects]]
+  name = "github.com/jessie-codes/echo-relic"
+  packages = ["."]
+  revision = "e20c59d45fdd3bb47959897656999ad4a9d8183d"
+  version = "1.0.0"
+
+[[projects]]
   name = "github.com/jinzhu/gorm"
   packages = [
     ".",
@@ -164,6 +170,20 @@
   name = "github.com/mitchellh/mapstructure"
   packages = ["."]
   revision = "00c29f56e2386353d58c599509e8dc3801b0d716"
+
+[[projects]]
+  name = "github.com/newrelic/go-agent"
+  packages = [
+    ".",
+    "internal",
+    "internal/cat",
+    "internal/jsonx",
+    "internal/logger",
+    "internal/sysinfo",
+    "internal/utilization"
+  ]
+  revision = "f5bce3387232559bcbe6a5f8227c4bf508dac1ba"
+  version = "v1.11.0"
 
 [[projects]]
   name = "github.com/pborman/uuid"
@@ -347,6 +367,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "2696363e82bac7a2944ab2879d1e5ba10f6389924917bf7f13c202490d4addbe"
+  inputs-digest = "aae0f7162de7871a3f3990134b95c000475305043f9a4f96c76d2fa8054bd85c"
   solver-name = "gps-cdcl"
   solver-version = 1

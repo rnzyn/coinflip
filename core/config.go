@@ -10,6 +10,7 @@ import (
 )
 
 type Config struct {
+	AppName              string
 	Debug                bool
 	Database             string
 	Domain               string
@@ -20,6 +21,7 @@ type Config struct {
 	ContractAddress      string
 	BlockchainInfoApiKey string
 	BtcEthFallbackRate   decimal.Decimal
+	NewRelicLicenseKey   string
 }
 
 func NewConfig(prefix string) *Config {
@@ -29,15 +31,18 @@ func NewConfig(prefix string) *Config {
 	// Viper instance
 	viper.AutomaticEnv()
 	viper.SetEnvPrefix(prefix)
+	viper.SetDefault(ConfigDefaultAppName, ConfigDefaultAppName)
 	viper.SetDefault(ConfigOptionPort, ConfigDefaultPort)
 	viper.SetDefault(ConfigOptionDebug, ConfigDefaultDebug)
 	viper.SetDefault(ConfigOptionFeatures, ConfigDefaultFeatures)
 
 	// Load configuration variables
 	cfg := new(Config)
+	cfg.AppName = viper.GetString(ConfigOptionAppName)
 	cfg.Port = viper.GetString(ConfigOptionPort)
 	cfg.Features = viper.GetStringSlice(ConfigOptionFeatures)
 	cfg.Debug = viper.GetBool(ConfigOptionDebug)
+	cfg.NewRelicLicenseKey = viper.GetString(ConfigOptionNewRelicLicenseKey)
 
 	// Fail fast
 	cfg.Database = viper.GetString(ConfigOptionDatabase)
@@ -83,6 +88,7 @@ func NewConfig(prefix string) *Config {
 
 	// Print configuration variables
 	log.WithFields(log.Fields{
+		ConfigOptionAppName:            cfg.AppName,
 		ConfigOptionDomain:             cfg.Domain,
 		ConfigOptionPort:               cfg.Port,
 		ConfigOptionDebug:              cfg.Debug,

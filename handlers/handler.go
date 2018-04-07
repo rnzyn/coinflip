@@ -65,6 +65,7 @@ func NewCoinflip(cfg *core.Config) *Coinflip {
 	h.Contract = contract
 	h.Database = db
 	h.TxOpts = bind.NewKeyedTransactor(ecdsaKey)
+
 	return h
 }
 

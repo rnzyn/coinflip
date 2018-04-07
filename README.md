@@ -30,14 +30,23 @@ Required configuration options:
 | `CF_CONTRACT_ADDRESS`        | Token sale smart contract address      |
 | `CF_BLOCKCHAIN_INFO_API_KEY` | Blockchain.info API key                |
 | `CF_BTCETH_FALLBACK_RATE`    | BTCETH pair fallback conversion rate   |
+| `CF_NEW_RELIC_LICENSE_KEY`   | NewRelic License Key                   |
 
 Optional configuration options:
 
-| Name          | Description                  | Default value                |
-|---------------|------------------------------|------------------------------|
-| `CF_DEBUG`    | Debug mode (HTTP, SQL)       | `false`                      |
-| `CF_PORT`     | Port number to bind on       | `3000`                       |
-| `CF_FEATURES` | Space-separated feature list | `stats blockchain whitelist` |
+| Name          | Description                   | Default value  |
+|---------------|-------------------------------|----------------|
+| `CF_APP_NAME` | Application name for NewRelic | `coinflip`     |
+| `CF_DEBUG`    | Debug mode (HTTP, SQL)        | `false`        |
+| `CF_PORT`     | Port number to bind on        | `3000`         |
+| `CF_FEATURES` | Space-separated feature list  | All<sup>*<sup> |
+
+Available features:
+
+* `stats` - enables read-only smart contract calls.
+* `whitelist` - enables whitelisting CRUD.
+* `blockchain` - enables Blockchain.info Receive Payments API.
+* `newrelic` - sends metric to NewRelic, license key should be set.
 
 ## Testing
 

@@ -8,6 +8,7 @@ const (
 	ErrGethConnFailrue      = "Failed to connect to the Ethereum node: %s"
 	ErrContractInit         = "Failed to instantiate contract: %s"
 	ErrPrivateKeyInit       = "Failed to load private key: %v"
+	ErrNewRelicAgent        = "Error creating NewRelic agent: %s"
 )
 
 // Handlers errors

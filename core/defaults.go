@@ -9,6 +9,14 @@ const (
 	HealthcheckResponse = "OK"
 )
 
+// Features
+const (
+	FeatureStats      = "stats"
+	FeatureWhitelist  = "whitelist"
+	FeatureBlockchain = "blockchain"
+	FeatureNewRelic   = "newrelic"
+)
+
 // Blockchain.info options
 const (
 	Confirmations            = 3
@@ -24,6 +32,8 @@ var (
 
 // Configuration options
 const (
+	ConfigOptionAppName              = "app_name"
+	ConfigOptionNewRelicLicenseKey   = "newrelic_license_key"
 	ConfigOptionDebug                = "debug"
 	ConfigOptionDatabase             = "database"
 	ConfigOptionPort                 = "port"
@@ -38,6 +48,7 @@ const (
 
 // Configuration defaults
 const (
+	ConfigDefaultAppName  = "coinflip"
 	ConfigDefaultDebug    = false
 	ConfigDefaultPort     = 3000
 	ConfigDefaultFeatures = "stats whitelist blockchain"
