@@ -5,7 +5,7 @@ import "time"
 type Account struct {
 	ID        uint       `json:"id" gorm:"primary_key"`
 	Xpub      string     `json:"xpub" gorm:"not null; unique"`
-	Gap       int        `json:"gap" gorm:"not null; default: 0"`
+	Gap       int        `json:"gap" gorm:"not null"`
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt time.Time  `json:"updated_at,omitempty"`
 	DeletedAt *time.Time `json:"deleted_at,omitempty" sql:"index"`
