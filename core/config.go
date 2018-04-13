@@ -18,7 +18,8 @@ type Config struct {
 	Features             []string
 	GethIpcPath          string
 	EthPrivateKey        string
-	ContractAddress      string
+	EthSaleContract      string
+	EthTokenContract     string
 	BlockchainInfoApiKey string
 	BtcEthFallbackRate   decimal.Decimal
 	NewRelicLicenseKey   string
@@ -69,9 +70,15 @@ func NewConfig(prefix string) *Config {
 		log.Fatalf(ErrConfigOptionRequired, option)
 	}
 
-	cfg.ContractAddress = viper.GetString(ConfigOptionContractAddress)
-	if cfg.ContractAddress == "" {
-		option := strings.ToUpper(prefix + "_" + ConfigOptionContractAddress)
+	cfg.EthSaleContract = viper.GetString(ConfigOptionEthSaleContract)
+	if cfg.EthSaleContract == "" {
+		option := strings.ToUpper(prefix + "_" + ConfigOptionEthSaleContract)
+		log.Fatalf(ErrConfigOptionRequired, option)
+	}
+
+	cfg.EthTokenContract = viper.GetString(ConfigOptionEthTokenContract)
+	if cfg.EthTokenContract == "" {
+		option := strings.ToUpper(prefix + "_" + ConfigOptionEthTokenContract)
 		log.Fatalf(ErrConfigOptionRequired, option)
 	}
 
@@ -95,7 +102,8 @@ func NewConfig(prefix string) *Config {
 		ConfigOptionDatabase:           cfg.Database,
 		ConfigOptionFeatures:           cfg.Features,
 		ConfigOptionGethIpcPath:        cfg.GethIpcPath,
-		ConfigOptionContractAddress:    cfg.ContractAddress,
+		ConfigOptionEthSaleContract:    cfg.EthSaleContract,
+		ConfigOptionEthTokenContract:   cfg.EthTokenContract,
 		ConfigOptionBtcEthFallbackRate: cfg.BtcEthFallbackRate,
 	}).Info("Coinflip configuration")
 

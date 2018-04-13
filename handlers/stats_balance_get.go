@@ -9,7 +9,7 @@ import (
 	"github.com/labstack/echo"
 )
 
-func (h *Coinflip) WhitelistGet(c echo.Context) error {
+func (h *Coinflip) BalanceGet(c echo.Context) error {
 	ctx := c.(*core.CoinflipContext)
 
 	// Parse input
@@ -20,12 +20,12 @@ func (h *Coinflip) WhitelistGet(c echo.Context) error {
 	}
 
 	// Call smart contract
-	result, err := h.SaleContract.WhitelistCheck(nil, address)
+	balance, err := h.TokenContract.BalanceOf(nil, address)
 	if err != nil {
 		return ctx.JsonError(err)
 	}
 
 	return ctx.JSON(http.StatusOK, map[string]interface{}{
-		"whitelisted": result,
+		"balance": balance,
 	})
 }

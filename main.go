@@ -43,6 +43,7 @@ func main() {
 	if coinflip.HasFeature(core.FeatureStats) {
 		g1 := e.Group("stats")
 		g1.GET("", coinflip.StatsGet)
+		g1.GET("/balance/:address", coinflip.BalanceGet)
 	}
 
 	// Whitelist feature

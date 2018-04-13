@@ -99,7 +99,7 @@ func (h *Coinflip) BlockchainCallback(c echo.Context) error {
 
 	// Call smart contract
 	beneficiary := common.HexToAddress(transfer.Beneficiary)
-	transaction, err := h.Contract.BuyTokensBTC(h.TxOpts, beneficiary, transferValue)
+	transaction, err := h.SaleContract.BuyTokensBTC(h.TxOpts, beneficiary, transferValue)
 	if err != nil {
 		return ctx.JsonError(err)
 	}

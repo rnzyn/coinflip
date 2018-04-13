@@ -41,7 +41,8 @@ const (
 	ConfigOptionDomain               = "domain"
 	ConfigOptionGethIpcPath          = "geth_ipc_path"
 	ConfigOptionEthPrivateKey        = "eth_private_key"
-	ConfigOptionContractAddress      = "contract_address"
+	ConfigOptionEthSaleContract      = "eth_sale_contract"
+	ConfigOptionEthTokenContract     = "eth_token_contract"
 	ConfigOptionBlockchainInfoApiKey = "blockchain_info_api_key"
 	ConfigOptionBtcEthFallbackRate   = "btceth_fallback_rate"
 )

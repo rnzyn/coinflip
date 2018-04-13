@@ -15,10 +15,11 @@ import (
 )
 
 type Coinflip struct {
-	Config   *core.Config
-	Contract *contracts.TokenSale
-	Database *gorm.DB
-	TxOpts   *bind.TransactOpts
+	Config        *core.Config
+	Database      *gorm.DB
+	SaleContract  *contracts.TokenSale
+	TokenContract *contracts.ShopToken
+	TxOpts        *bind.TransactOpts
 }
 
 func NewCoinflip(cfg *core.Config) *Coinflip {
@@ -47,8 +48,14 @@ func NewCoinflip(cfg *core.Config) *Coinflip {
 		log.Fatalf(core.ErrGethConnFailrue, err)
 	}
 
-	// Instantiate the contract and display its name
-	contract, err := contracts.NewTokenSale(common.HexToAddress(cfg.ContractAddress), conn)
+	// Instantiate sale contract
+	saleContract, err := contracts.NewTokenSale(common.HexToAddress(cfg.EthSaleContract), conn)
+	if err != nil {
+		log.Fatalf(core.ErrContractInit, err)
+	}
+
+	// Instantiate token contract
+	tokenContract, err := contracts.NewShopToken(common.HexToAddress(cfg.EthTokenContract), conn)
 	if err != nil {
 		log.Fatalf(core.ErrContractInit, err)
 	}
@@ -62,8 +69,9 @@ func NewCoinflip(cfg *core.Config) *Coinflip {
 	// Instantiate handler
 	h := new(Coinflip)
 	h.Config = cfg
-	h.Contract = contract
 	h.Database = db
+	h.SaleContract = saleContract
+	h.TokenContract = tokenContract
 	h.TxOpts = bind.NewKeyedTransactor(ecdsaKey)
 
 	return h

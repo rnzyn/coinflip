@@ -31,7 +31,7 @@ func (h *Coinflip) WhitelistDelete(c echo.Context) error {
 	}
 
 	// Send transaction
-	transaction, err := h.Contract.WhitelistRemove(h.TxOpts, addresses)
+	transaction, err := h.SaleContract.WhitelistRemove(h.TxOpts, addresses)
 	if err != nil {
 		return ctx.JsonError(err)
 	}

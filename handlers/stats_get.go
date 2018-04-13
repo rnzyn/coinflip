@@ -11,15 +11,15 @@ func (h *Coinflip) StatsGet(c echo.Context) error {
 	ctx := c.(*core.CoinflipContext)
 
 	// Retrieve data from smart contracts
-	active, err := h.Contract.IsActiveSale(nil)
-	availableUnits, err := h.Contract.AvailableUnits(nil)
-	basePrice, err := h.Contract.BasePrice(nil)
-	discountPrice, err := h.Contract.DiscountPrice(nil)
-	duration, err := h.Contract.Duration(nil)
-	minPayment, err := h.Contract.MinPayment(nil)
-	startTime, err := h.Contract.StartTime(nil)
-	unitsSold, err := h.Contract.UnitsSold(nil)
-	weiReceived, err := h.Contract.WeiReceived(nil)
+	active, err := h.SaleContract.IsActiveSale(nil)
+	availableUnits, err := h.SaleContract.AvailableUnits(nil)
+	basePrice, err := h.SaleContract.BasePrice(nil)
+	discountPrice, err := h.SaleContract.DiscountPrice(nil)
+	duration, err := h.SaleContract.Duration(nil)
+	minPayment, err := h.SaleContract.MinPayment(nil)
+	startTime, err := h.SaleContract.StartTime(nil)
+	unitsSold, err := h.SaleContract.UnitsSold(nil)
+	weiReceived, err := h.SaleContract.WeiReceived(nil)
 
 	if err != nil {
 		return ctx.JsonError(err)

@@ -27,7 +27,8 @@ Required configuration options:
 | `CF_DATABASE`                | Database connection string             |
 | `CF_GETH_IPC_PATH`           | Absolute path to Geth IPC interface    |
 | `CF_ETH_PRIVATE_KEY`         | Ethereum account Secp256k1 private key |
-| `CF_CONTRACT_ADDRESS`        | Token sale smart contract address      |
+| `CF_ETH_SALE_CONTRACT`       | Token sale smart contract address      |
+| `CF_ETH_TOKEN_CONTRACT`      | ERC-20 token smart contract address    |
 | `CF_BLOCKCHAIN_INFO_API_KEY` | Blockchain.info API key                |
 | `CF_BTCETH_FALLBACK_RATE`    | BTCETH pair fallback conversion rate   |
 | `CF_NEW_RELIC_LICENSE_KEY`   | NewRelic License Key                   |
@@ -71,7 +72,7 @@ Available features:
     ```
     $ go get github.com/ShopperShop/coinflip
     $ cd $GOPATH/src/github.com/ShoppersShop/coinflip
-    $ make install build
+    $ make install abigen build
     ```
 
 4. Create `.env` file in Coinflip repo with proper [configuration values](#configuration).
@@ -84,4 +85,10 @@ Available features:
 
 6. Query with Postman:
 
-    [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/090c7a215e2b9f2c037a)
+    [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/090c7a215e2b9f2c037a#?env%5BLocalhost%5D=W3sia2V5IjoiYmFzZV91cmwiLCJ2YWx1ZSI6ImxvY2FsaG9zdDozMDAwIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifV0=)
+
+## Troubleshooting
+
+Run Geth console:
+
+    $ geth attach ipc:/tmp/geth/geth.ipc console

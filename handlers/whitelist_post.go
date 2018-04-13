@@ -25,13 +25,13 @@ func (h *Coinflip) WhitelistPost(c echo.Context) error {
 		if common.IsHexAddress(address) {
 			addresses = append(addresses, common.HexToAddress(address))
 		} else {
-			err := fmt.Errorf(core.ErrNotEnoughConfirmations, address)
+			err := fmt.Errorf(core.ErrInvalidEthereumAddress, address)
 			return ctx.JsonError(err)
 		}
 	}
 
 	// Send transaction
-	transaction, err := h.Contract.WhitelistAdd(h.TxOpts, addresses)
+	transaction, err := h.SaleContract.WhitelistAdd(h.TxOpts, addresses)
 	if err != nil {
 		return ctx.JsonError(err)
 	}
