@@ -1,0 +1,8 @@
+# .goreleaser.yml
+builds:
+  - binary: coinflip
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
