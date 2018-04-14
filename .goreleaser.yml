@@ -1,4 +1,7 @@
 # .goreleaser.yml
+before:
+  hooks:
+  - dep ensure
 builds:
   - binary: coinflip
     goos:
