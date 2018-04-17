@@ -15,6 +15,7 @@ type Config struct {
 	Database             string
 	Domain               string
 	Port                 string
+	Protocol             string
 	Features             []string
 	GethIpcPath          string
 	EthPrivateKey        string
@@ -36,6 +37,7 @@ func NewConfig(prefix string) *Config {
 	viper.SetDefault(ConfigOptionPort, ConfigDefaultPort)
 	viper.SetDefault(ConfigOptionDebug, ConfigDefaultDebug)
 	viper.SetDefault(ConfigOptionFeatures, ConfigDefaultFeatures)
+	viper.SetDefault(ConfigOptionProtocol, ConfigDefaultProtocol)
 
 	// Load configuration variables
 	cfg := new(Config)
@@ -98,6 +100,7 @@ func NewConfig(prefix string) *Config {
 		ConfigOptionAppName:            cfg.AppName,
 		ConfigOptionDomain:             cfg.Domain,
 		ConfigOptionPort:               cfg.Port,
+		ConfigOptionProtocol:           cfg.Protocol,
 		ConfigOptionDebug:              cfg.Debug,
 		ConfigOptionFeatures:           cfg.Features,
 		ConfigOptionGethIpcPath:        cfg.GethIpcPath,
@@ -106,6 +109,7 @@ func NewConfig(prefix string) *Config {
 		ConfigOptionBtcEthFallbackRate: cfg.BtcEthFallbackRate,
 	}).Info("Coinflip configuration")
 
+	// Set fallback rate
 	cfg.BtcEthFallbackRate = fallbackRate
 	return cfg
 }

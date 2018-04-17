@@ -37,6 +37,7 @@ const (
 	ConfigOptionDebug                = "debug"
 	ConfigOptionDatabase             = "database"
 	ConfigOptionPort                 = "port"
+	ConfigOptionProtocol             = "protocol"
 	ConfigOptionFeatures             = "features"
 	ConfigOptionDomain               = "domain"
 	ConfigOptionGethIpcPath          = "geth_ipc_path"
@@ -52,6 +53,7 @@ const (
 	ConfigDefaultAppName  = "coinflip"
 	ConfigDefaultDebug    = false
 	ConfigDefaultPort     = 3000
+	ConfigDefaultProtocol = "https"
 	ConfigDefaultFeatures = "stats whitelist blockchain"
 )
 
@@ -69,6 +71,6 @@ const (
 	CryptoCompareBtcEthRate = "/data/price?fsym=BTC&tsyms=ETH"
 )
 
-func GetCallbackUrl(domain string, invoiceID string) string {
-	return "https://" + domain + "/blockchain/callback/" + invoiceID
+func GetCallbackUrl(protocol string, domain string, invoiceID string) string {
+	return protocol + "://" + domain + "/blockchain/callback/" + invoiceID
 }

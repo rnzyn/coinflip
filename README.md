@@ -40,6 +40,7 @@ Optional configuration options:
 | `CF_APP_NAME` | Application name for NewRelic | `coinflip`     |
 | `CF_DEBUG`    | Debug mode (HTTP, SQL)        | `false`        |
 | `CF_PORT`     | Port number to bind on        | `3000`         |
+| `CF_PROTOCOL` | Scheme for callback URL       | `https`        |
 | `CF_FEATURES` | Space-separated feature list  | All<sup>*<sup> |
 
 Available features:

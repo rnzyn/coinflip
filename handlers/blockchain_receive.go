@@ -53,7 +53,7 @@ func (h *Coinflip) BlockchainReceive(c echo.Context) error {
 	res, err := httpclient.Get(requestUrl, map[string]string{
 		"key":      h.Config.BlockchainInfoApiKey,
 		"xpub":     account.Xpub,
-		"callback": core.GetCallbackUrl(h.Config.Domain, invoiceID.String()),
+		"callback": core.GetCallbackUrl(h.Config.Protocol, h.Config.Domain, invoiceID.String()),
 	})
 
 	if err != nil {
