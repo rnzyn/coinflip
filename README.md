@@ -43,7 +43,7 @@ Optional configuration options:
 | `CF_PROTOCOL` | Scheme for callback URL       | `https`        |
 | `CF_FEATURES` | Space-separated feature list  | All<sup>*<sup> |
 
-Available features:
+<sup>*<sup>Available features:
 
 * `stats` - enables read-only smart contract calls.
 * `whitelist` - enables whitelisting CRUD.
