@@ -46,6 +46,7 @@ func NewConfig(prefix string) *Config {
 	cfg.Features = viper.GetStringSlice(ConfigOptionFeatures)
 	cfg.Debug = viper.GetBool(ConfigOptionDebug)
 	cfg.NewRelicLicenseKey = viper.GetString(ConfigOptionNewRelicLicenseKey)
+	cfg.Protocol = viper.GetString(ConfigOptionProtocol)
 
 	// Fail fast
 	cfg.Database = viper.GetString(ConfigOptionDatabase)
