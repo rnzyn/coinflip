@@ -27,6 +27,9 @@ deps:
 geth:
 	geth --datadir /tmp/geth --dev --dev.period 1 --rpc --rpcapi eth,net,personal,web3
 
+console:
+	geth attach ipc:/tmp/geth/geth.ipc console
+
 recover:
 	npm install -g keythereum
 	npm link keythereum
@@ -35,4 +38,4 @@ recover:
 run:
 	./coinflip
 
-.PHONY: abigen build deps geth clean recover run
+.PHONY: abigen build console deps geth clean recover run
