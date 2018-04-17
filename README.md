@@ -86,7 +86,7 @@ Available features:
 
 6. Query with Postman:
 
-    [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/090c7a215e2b9f2c037a#?env%5BLocalhost%5D=W3sia2V5IjoiYmFzZV91cmwiLCJ2YWx1ZSI6ImxvY2FsaG9zdDozMDAwIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifV0=)
+    [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/090c7a215e2b9f2c037a#?env%5BLocalhost%5D=W3sidHlwZSI6InRleHQiLCJlbmFibGVkIjp0cnVlLCJrZXkiOiJiYXNlX3VybCIsInZhbHVlIjoibG9jYWxob3N0OjMwMDAifV0=)
 
 ## Troubleshooting
 
