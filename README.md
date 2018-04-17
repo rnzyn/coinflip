@@ -72,7 +72,7 @@ Available features:
     ```
     $ go get github.com/ShopperShop/coinflip
     $ cd $GOPATH/src/github.com/ShoppersShop/coinflip
-    $ make install abigen build
+    $ make deps build
     ```
 
 4. Create `.env` file in Coinflip repo with proper [configuration values](#configuration).
