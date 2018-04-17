@@ -40,7 +40,7 @@ func (h *Coinflip) BlockchainCallback(c echo.Context) error {
 	}
 
 	// Find transfer by invoice
-	invoiceID := c.QueryParam("invoice_id")
+	invoiceID := c.Param("invoice_id")
 	transfer := models.Transfer{}
 	if h.Database.Preload("Address.Account").Where("invoice_id = ?", invoiceID).First(&transfer).RecordNotFound() {
 		return ctx.JsonError(errors.New(core.ErrTransferNotFound))

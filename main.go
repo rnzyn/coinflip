@@ -58,7 +58,7 @@ func main() {
 	if coinflip.HasFeature(core.FeatureBlockchain) {
 		g3 := e.Group("blockchain")
 		g3.POST("/receive", coinflip.BlockchainReceive)
-		g3.GET("/callback", coinflip.BlockchainCallback)
+		g3.GET("/callback/:invoice_id", coinflip.BlockchainCallback)
 		g3.GET("/invoice/:id", coinflip.BlockchainInvoiceGet)
 		g3.GET("/callback/logs", coinflip.BlockchainCallbackLogs)
 		g3.GET("/gap/:xpub", coinflip.BlockchainGapCheck)
