@@ -99,7 +99,6 @@ func NewConfig(prefix string) *Config {
 		ConfigOptionDomain:             cfg.Domain,
 		ConfigOptionPort:               cfg.Port,
 		ConfigOptionDebug:              cfg.Debug,
-		ConfigOptionDatabase:           cfg.Database,
 		ConfigOptionFeatures:           cfg.Features,
 		ConfigOptionGethIpcPath:        cfg.GethIpcPath,
 		ConfigOptionEthSaleContract:    cfg.EthSaleContract,
