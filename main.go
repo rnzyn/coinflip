@@ -10,9 +10,19 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// Provided by `govvv` tool
+var (
+	GitCommit  string
+	GitBranch  string
+	GitState   string
+	GitSummary string
+	BuildDate  string
+)
+
 func main() {
 	// Init config & Coinflip handler
-	cfg := core.NewConfig("cf")
+	build := core.NewBuild(GitCommit, GitBranch, GitState, GitSummary, BuildDate)
+	cfg := core.NewConfig("cf", build)
 	coinflip := handlers.NewCoinflip(cfg)
 
 	// Init echo
@@ -36,8 +46,9 @@ func main() {
 		}
 	})
 
-	// Healthcheck route
+	// Built-in routes
 	e.GET("/", coinflip.Healthcheck)
+	e.GET("/version", coinflip.Version)
 
 	// Stats feature
 	if coinflip.HasFeature(core.FeatureStats) {
@@ -63,6 +74,31 @@ func main() {
 		g3.GET("/callback/logs/:invoice_id", coinflip.BlockchainCallbackLogs)
 		g3.GET("/gap/:xpub", coinflip.BlockchainGapCheck)
 	}
+
+	// Print configuration variables
+	log.WithFields(log.Fields{
+		core.ConfigOptionAppName:            cfg.AppName,
+		core.ConfigOptionDomain:             cfg.Domain,
+		core.ConfigOptionPort:               cfg.Port,
+		core.ConfigOptionProtocol:           cfg.Protocol,
+		core.ConfigOptionDebug:              cfg.Debug,
+		core.ConfigOptionFeatures:           cfg.Features,
+		core.ConfigOptionGethIpcPath:        cfg.GethIpcPath,
+		core.ConfigOptionEthSaleContract:    cfg.EthSaleContract,
+		core.ConfigOptionEthTokenContract:   cfg.EthTokenContract,
+		core.ConfigOptionBtcEthFallbackRate: cfg.BtcEthFallbackRate,
+		core.ConfigOptionHttpConnectTimeout: cfg.HttpConnectTimeout,
+		core.ConfigOptionHttpTimeout:        cfg.HttpTimeout,
+	}).Info("Coinflip configuration")
+
+	// Print build metadata
+	log.WithFields(log.Fields{
+		"git_commit":  cfg.Build.GitCommit,
+		"git_branch":  cfg.Build.GitBranch,
+		"git_state":   cfg.Build.GitState,
+		"git_summary": cfg.Build.GitSummary,
+		"build_date":  cfg.Build.BuildDate,
+	}).Info("Build metadata")
 
 	// Start server
 	e.Logger.Fatal(e.Start(":" + cfg.Port))

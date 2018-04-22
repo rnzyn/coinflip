@@ -11,6 +11,7 @@ import (
 
 type Config struct {
 	AppName              string
+	Build                *Build
 	Debug                bool
 	Database             string
 	Domain               string
@@ -28,7 +29,7 @@ type Config struct {
 	HttpTimeout          int
 }
 
-func NewConfig(prefix string) *Config {
+func NewConfig(prefix string, build *Build) *Config {
 	// Load .env if exists
 	godotenv.Load()
 
@@ -101,22 +102,6 @@ func NewConfig(prefix string) *Config {
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	// Print configuration variables
-	log.WithFields(log.Fields{
-		ConfigOptionAppName:            cfg.AppName,
-		ConfigOptionDomain:             cfg.Domain,
-		ConfigOptionPort:               cfg.Port,
-		ConfigOptionProtocol:           cfg.Protocol,
-		ConfigOptionDebug:              cfg.Debug,
-		ConfigOptionFeatures:           cfg.Features,
-		ConfigOptionGethIpcPath:        cfg.GethIpcPath,
-		ConfigOptionEthSaleContract:    cfg.EthSaleContract,
-		ConfigOptionEthTokenContract:   cfg.EthTokenContract,
-		ConfigOptionBtcEthFallbackRate: fallbackRate,
-		ConfigOptionHttpConnectTimeout: cfg.HttpConnectTimeout,
-		ConfigOptionHttpTimeout:        cfg.HttpTimeout,
-	}).Info("Coinflip configuration")
 
 	// Set fallback rate
 	cfg.BtcEthFallbackRate = fallbackRate

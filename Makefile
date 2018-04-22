@@ -15,13 +15,14 @@ abigen-token:
 abigen: abigen-sale abigen-token
 
 build:
-	@go build -o ./coinflip
+	go build -ldflags="`govvv -flags`" -o ./coinflip
 
 clean:
 	@rm -rf ./coinflip
 
 deps:
 	go get -u github.com/golang/dep/cmd/dep
+	go get github.com/ahmetb/govvv
 	dep ensure
 
 geth:
