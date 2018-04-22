@@ -113,7 +113,7 @@ func NewConfig(prefix string) *Config {
 		ConfigOptionGethIpcPath:        cfg.GethIpcPath,
 		ConfigOptionEthSaleContract:    cfg.EthSaleContract,
 		ConfigOptionEthTokenContract:   cfg.EthTokenContract,
-		ConfigOptionBtcEthFallbackRate: cfg.BtcEthFallbackRate,
+		ConfigOptionBtcEthFallbackRate: fallbackRate,
 		ConfigOptionHttpConnectTimeout: cfg.HttpConnectTimeout,
 		ConfigOptionHttpTimeout:        cfg.HttpTimeout,
 	}).Info("Coinflip configuration")
