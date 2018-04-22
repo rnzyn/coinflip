@@ -12,6 +12,7 @@ import (
 	"github.com/ShoppersShop/coinflip/responses"
 	httpclient "github.com/ddliu/go-httpclient"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/jinzhu/gorm"
 	"github.com/labstack/echo"
 	uuid "github.com/satori/go.uuid"
 )
@@ -81,13 +82,6 @@ func (h *Coinflip) BlockchainReceive(c echo.Context) error {
 	// Begin transaction
 	tx := h.Database.Begin()
 
-	// Increase gap
-	account.Gap = account.Gap + 1
-	if err := h.Database.Save(&account).Error; err != nil {
-		tx.Rollback()
-		return ctx.JsonError(err)
-	}
-
 	// Create new address
 	address := models.Address{
 		Address:   response.Address,
@@ -111,6 +105,22 @@ func (h *Coinflip) BlockchainReceive(c echo.Context) error {
 	if err := h.Database.Create(&transfer).Error; err != nil {
 		tx.Rollback()
 		return ctx.JsonError(err)
+	}
+
+	// Increase address gap
+	atomicUpdate := h.Database.Model(&account).
+		Where("id = ? AND gap < ?", account.ID, core.Bip44AddressLimit).
+		Update("gap", gorm.Expr("gap + 1"))
+
+	rowsAffected, err := atomicUpdate.RowsAffected, atomicUpdate.Error
+	if err != nil {
+		tx.Rollback()
+		return ctx.JsonError(err)
+	}
+
+	if rowsAffected == 0 {
+		tx.Rollback()
+		return ctx.JsonError(errors.New(core.ErrNoAvailableAccountsFound))
 	}
 
 	// Commit transaction

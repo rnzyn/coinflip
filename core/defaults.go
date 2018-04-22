@@ -46,15 +46,19 @@ const (
 	ConfigOptionEthTokenContract     = "eth_token_contract"
 	ConfigOptionBlockchainInfoApiKey = "blockchain_info_api_key"
 	ConfigOptionBtcEthFallbackRate   = "btceth_fallback_rate"
+	ConfigOptionHttpConnectTimeout   = "http_connect_timeout"
+	ConfigOptionHttpTimeout          = "http_timeout"
 )
 
 // Configuration defaults
 const (
-	ConfigDefaultAppName  = "coinflip"
-	ConfigDefaultDebug    = false
-	ConfigDefaultPort     = 3000
-	ConfigDefaultProtocol = "https"
-	ConfigDefaultFeatures = "stats whitelist blockchain"
+	ConfigDefaultAppName            = "coinflip"
+	ConfigDefaultDebug              = false
+	ConfigDefaultPort               = 3000
+	ConfigDefaultHttpTimeout        = 20000
+	ConfigDefaultHttpConnectTimeout = 10000
+	ConfigDefaultProtocol           = "https"
+	ConfigDefaultFeatures           = "stats whitelist blockchain"
 )
 
 // Blockchain.info API defaults

@@ -35,13 +35,15 @@ Required configuration options:
 
 Optional configuration options:
 
-| Name          | Description                   | Default value  |
-|---------------|-------------------------------|-----------------|
-| `CF_APP_NAME` | Application name for NewRelic | `coinflip`      |
-| `CF_DEBUG`    | Debug mode (HTTP, SQL)        | `false`         |
-| `CF_PORT`     | Port number to bind on        | `3000`          |
-| `CF_PROTOCOL` | Scheme for callback URL       | `https`         |
-| `CF_FEATURES` | Space-separated feature list  | All<sup>*</sup> |
+| Name                      | Description                      | Default value   |
+|---------------------------|----------------------------------|-----------------|
+| `CF_APP_NAME`             | Application name for NewRelic    | `coinflip`      |
+| `CF_DEBUG`                | Debug mode (HTTP, SQL)           | `false`         |
+| `CF_PORT`                 | Port number to bind on           | `3000`          |
+| `CF_PROTOCOL`             | Scheme for callback URL          | `https`         |
+| `CF_HTTP_CONNECT_TIMEOUT` | HTTP Client connect timeout (ms) | `10000`         |
+| `CF_HTTP_TIMEOUT`         | HTTP Client timeout (ms)         | `20000`         |
+| `CF_FEATURES`             | Space-separated feature list     | All<sup>*</sup> |
 
 <sup>*</sup>Available features:
 

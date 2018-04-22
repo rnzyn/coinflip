@@ -25,9 +25,11 @@ type Coinflip struct {
 func NewCoinflip(cfg *core.Config) *Coinflip {
 	// Configure http client
 	httpclient.Defaults(httpclient.Map{
-		httpclient.OPT_DEBUG: cfg.Debug,
-		"Content-Type":       "application/json",
-		"Accept":             "application/json",
+		httpclient.OPT_DEBUG:             cfg.Debug,
+		httpclient.OPT_CONNECTTIMEOUT_MS: cfg.HttpConnectTimeout,
+		httpclient.OPT_TIMEOUT_MS:        cfg.HttpTimeout,
+		"Content-Type":                   "application/json",
+		"Accept":                         "application/json",
 	})
 
 	// Configure database connection

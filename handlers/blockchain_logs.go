@@ -3,6 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
+	"net/url"
 
 	"github.com/ShoppersShop/coinflip/core"
 	"github.com/ShoppersShop/coinflip/responses"
@@ -13,11 +14,18 @@ import (
 func (h *Coinflip) BlockchainCallbackLogs(c echo.Context) error {
 	ctx := c.(*core.CoinflipContext)
 
+	// Prepare callback URL
+	callbackUrl := url.URL{
+		Scheme: h.Config.Protocol,
+		Host:   h.Config.Domain,
+		Path:   "/blockchain/callback/" + ctx.QueryParam("invoice_id"),
+	}
+
 	// Perform API request
 	requestUrl := core.BlockchainInfoBaseUrl + core.BlockchainInfoCallbackLog
 	res, err := httpclient.Get(requestUrl, map[string]string{
 		"key":      h.Config.BlockchainInfoApiKey,
-		"callback": ctx.QueryParam("url"),
+		"callback": callbackUrl.String(),
 	})
 
 	if err != nil {

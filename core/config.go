@@ -24,6 +24,8 @@ type Config struct {
 	BlockchainInfoApiKey string
 	BtcEthFallbackRate   decimal.Decimal
 	NewRelicLicenseKey   string
+	HttpConnectTimeout   int
+	HttpTimeout          int
 }
 
 func NewConfig(prefix string) *Config {
@@ -38,6 +40,8 @@ func NewConfig(prefix string) *Config {
 	viper.SetDefault(ConfigOptionDebug, ConfigDefaultDebug)
 	viper.SetDefault(ConfigOptionFeatures, ConfigDefaultFeatures)
 	viper.SetDefault(ConfigOptionProtocol, ConfigDefaultProtocol)
+	viper.SetDefault(ConfigOptionHttpConnectTimeout, ConfigDefaultHttpConnectTimeout)
+	viper.SetDefault(ConfigOptionHttpTimeout, ConfigDefaultHttpTimeout)
 
 	// Load configuration variables
 	cfg := new(Config)
@@ -47,6 +51,8 @@ func NewConfig(prefix string) *Config {
 	cfg.Debug = viper.GetBool(ConfigOptionDebug)
 	cfg.NewRelicLicenseKey = viper.GetString(ConfigOptionNewRelicLicenseKey)
 	cfg.Protocol = viper.GetString(ConfigOptionProtocol)
+	cfg.HttpConnectTimeout = viper.GetInt(ConfigOptionHttpConnectTimeout)
+	cfg.HttpTimeout = viper.GetInt(ConfigOptionHttpTimeout)
 
 	// Fail fast
 	cfg.Database = viper.GetString(ConfigOptionDatabase)
@@ -108,6 +114,8 @@ func NewConfig(prefix string) *Config {
 		ConfigOptionEthSaleContract:    cfg.EthSaleContract,
 		ConfigOptionEthTokenContract:   cfg.EthTokenContract,
 		ConfigOptionBtcEthFallbackRate: cfg.BtcEthFallbackRate,
+		ConfigOptionHttpConnectTimeout: cfg.HttpConnectTimeout,
+		ConfigOptionHttpTimeout:        cfg.HttpTimeout,
 	}).Info("Coinflip configuration")
 
 	// Set fallback rate

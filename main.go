@@ -60,7 +60,7 @@ func main() {
 		g3.POST("/receive", coinflip.BlockchainReceive)
 		g3.GET("/callback/:invoice_id", coinflip.BlockchainCallback)
 		g3.GET("/invoice/:id", coinflip.BlockchainInvoiceGet)
-		g3.GET("/callback/logs", coinflip.BlockchainCallbackLogs)
+		g3.GET("/callback/logs/:invoice_id", coinflip.BlockchainCallbackLogs)
 		g3.GET("/gap/:xpub", coinflip.BlockchainGapCheck)
 	}
 
