@@ -75,8 +75,15 @@ func main() {
 		g3.GET("/gap/:xpub", coinflip.BlockchainGapCheck)
 	}
 
+	// Price update feature
+	if coinflip.HasFeature(core.FeaturePrice) {
+		g4 := e.Group("price")
+		g4.POST("/update", coinflip.UpdatePrice)
+	}
+
 	// Print configuration variables
 	log.WithFields(log.Fields{
+		"from": coinflip.TxOpts.From.String(),
 		core.ConfigOptionAppName:            cfg.AppName,
 		core.ConfigOptionDomain:             cfg.Domain,
 		core.ConfigOptionPort:               cfg.Port,

@@ -51,6 +51,7 @@ Optional configuration options:
 * `whitelist` - enables whitelisting CRUD.
 * `blockchain` - enables Blockchain.info Receive Payments API.
 * `newrelic` - sends metric to NewRelic, license key should be set.
+* `price` - enables manual price update function call.
 
 ## Testing
 
@@ -88,7 +89,7 @@ Optional configuration options:
 
 6. Query with Postman:
 
-    [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/090c7a215e2b9f2c037a#?env%5BLocalhost%5D=W3sidHlwZSI6InRleHQiLCJlbmFibGVkIjp0cnVlLCJrZXkiOiJiYXNlX3VybCIsInZhbHVlIjoibG9jYWxob3N0OjMwMDAifV0=)
+    [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/7e3be8c06c6406d9cbf7#?env%5BLocalhost%5D=W3sidHlwZSI6InRleHQiLCJlbmFibGVkIjp0cnVlLCJrZXkiOiJiYXNlX3VybCIsInZhbHVlIjoibG9jYWxob3N0OjMwMDAifV0=)
 
 # License
 

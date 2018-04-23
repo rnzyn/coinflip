@@ -46,6 +46,7 @@ func NewConfig(prefix string, build *Build) *Config {
 
 	// Load configuration variables
 	cfg := new(Config)
+	cfg.Build = build
 	cfg.AppName = viper.GetString(ConfigOptionAppName)
 	cfg.Port = viper.GetString(ConfigOptionPort)
 	cfg.Features = viper.GetStringSlice(ConfigOptionFeatures)

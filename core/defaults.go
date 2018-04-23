@@ -1,12 +1,15 @@
 package core
 
 import (
+	"math/big"
+
 	"github.com/shopspring/decimal"
 )
 
 // Common options
 const (
 	HealthcheckResponse = "OK"
+	MinPaymentValue     = 800
 )
 
 // Features
@@ -15,6 +18,7 @@ const (
 	FeatureWhitelist  = "whitelist"
 	FeatureBlockchain = "blockchain"
 	FeatureNewRelic   = "newrelic"
+	FeaturePrice      = "price"
 )
 
 // Blockchain.info options
@@ -28,6 +32,7 @@ var (
 	Zero                = decimal.New(0, 0)
 	OneBitcoinInSatoshi = decimal.New(int64(1e+8), 0)
 	OneEtherInWei       = decimal.New(int64(1e+18), 0)
+	MinPayment          = big.NewInt(MinPaymentValue)
 )
 
 // Configuration options

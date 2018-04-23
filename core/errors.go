@@ -19,4 +19,6 @@ const (
 	ErrTransferNotFound          = "Transfer not found"
 	ErrTransferNotFoundCompleted = "Transfer not found or completed"
 	ErrBtcEthConversionFailure   = "Failed converting %s satoshi to wei"
+	ErrPriceUpdateFailure        = "Failed to set price to value %s"
+	ErrPriceUpdateMinValue       = "Failed to set price to value %s, should be bigger than %d"
 )
