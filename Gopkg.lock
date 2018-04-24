@@ -76,6 +76,12 @@
 
 [[projects]]
   branch = "master"
+  name = "github.com/hashicorp/go-uuid"
+  packages = ["."]
+  revision = "27454136f0364f2d44b1276c552d69105cf8c498"
+
+[[projects]]
+  branch = "master"
   name = "github.com/hashicorp/hcl"
   packages = [
     ".",
@@ -209,11 +215,6 @@
   packages = ["."]
   revision = "feef513b9575b32f84bafa580aad89b011259019"
   version = "v1.3.0"
-
-[[projects]]
-  name = "github.com/satori/go.uuid"
-  packages = ["."]
-  revision = "36e9d2ebbde5e3f13ab2e25625fd453271d6522e"
 
 [[projects]]
   name = "github.com/shopspring/decimal"
@@ -368,6 +369,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "18c7b37097428739ebd1a29ddc4cc5bdb3bdffadd5ef4389f4a6aec8a98235b4"
+  inputs-digest = "afa18100f8010b428c601041374e7c1097815dda0a2e8d2e221fb045d0c12d82"
   solver-name = "gps-cdcl"
   solver-version = 1

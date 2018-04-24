@@ -12,9 +12,9 @@ import (
 	"github.com/ShoppersShop/coinflip/responses"
 	httpclient "github.com/ddliu/go-httpclient"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/hashicorp/go-uuid"
 	"github.com/jinzhu/gorm"
 	"github.com/labstack/echo"
-	"github.com/satori/go.uuid"
 )
 
 func (h *Coinflip) BlockchainReceive(c echo.Context) error {
@@ -47,7 +47,7 @@ func (h *Coinflip) BlockchainReceive(c echo.Context) error {
 	}
 
 	// Generate invoice ID
-	invoiceID, err := uuid.NewV4()
+	invoiceID, err := uuid.GenerateUUID()
 	if err != nil {
 		return ctx.JsonError(err)
 	}
@@ -57,7 +57,7 @@ func (h *Coinflip) BlockchainReceive(c echo.Context) error {
 	res, err := httpclient.Get(requestUrl, map[string]string{
 		"key":      h.Config.BlockchainInfoApiKey,
 		"xpub":     account.Xpub,
-		"callback": core.GetCallbackUrl(h.Config.Protocol, h.Config.Domain, invoiceID.String()),
+		"callback": core.GetCallbackUrl(h.Config.Protocol, h.Config.Domain, invoiceID),
 	})
 
 	if err != nil {
@@ -99,7 +99,7 @@ func (h *Coinflip) BlockchainReceive(c echo.Context) error {
 
 	// Create new transfer
 	transfer = models.Transfer{
-		InvoiceID:   invoiceID.String(),
+		InvoiceID:   invoiceID,
 		Beneficiary: payload.Beneficiary,
 		AddressID:   address.ID,
 	}
