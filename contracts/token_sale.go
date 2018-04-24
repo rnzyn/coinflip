@@ -16,7 +16,7 @@ import (
 )
 
 // TokenSaleABI is the input ABI used to generate the binding from.
-const TokenSaleABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"duration\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"proxyAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"minPayment\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"endTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"walletAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"startTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"availableUnits\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"discountPrice\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isActiveSale\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"unitsSold\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"ownerAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"whitelist\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"weiReceived\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"basePrice\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_walletAddress\",\"type\":\"address\"},{\"name\":\"_proxyAddress\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"time\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"PriceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"SaleDeployed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_startTime\",\"type\":\"uint256\"}],\"name\":\"SaleStarted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_endTime\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"reason\",\"type\":\"uint8\"}],\"name\":\"SaleTerminated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_beneficiary\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"isBitcoin\",\"type\":\"bool\"}],\"name\":\"TokensPurchased\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_beneficiary\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"RefundProcessed\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"_tokenAddress\",\"type\":\"address\"}],\"name\":\"startSale\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"terminateSale\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"input\",\"type\":\"address[]\"}],\"name\":\"whitelistAdd\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"input\",\"type\":\"address[]\"}],\"name\":\"whitelistRemove\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"updatePrice\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"sender\",\"type\":\"address\"},{\"name\":\"transfer\",\"type\":\"uint256\"}],\"name\":\"buyTokensBTC\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"input\",\"type\":\"address\"}],\"name\":\"whitelistCheck\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]"
+const TokenSaleABI = "[{\"constant\":true,\"inputs\":[],\"name\":\"duration\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"proxyAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"minPayment\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"endTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"walletAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"startTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"bonusUsed\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"availableUnits\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isActiveSale\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"unitsSold\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"ownerAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"whitelist\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"weiReceived\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"price\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"availableBonus\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_walletAddress\",\"type\":\"address\"},{\"name\":\"_proxyAddress\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"time\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"PriceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"SaleDeployed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_startTime\",\"type\":\"uint256\"}],\"name\":\"SaleStarted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"_endTime\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"reason\",\"type\":\"uint8\"}],\"name\":\"SaleTerminated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_beneficiary\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"unitCount\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"isBitcoin\",\"type\":\"bool\"}],\"name\":\"TokensPurchased\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"_beneficiary\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"RefundProcessed\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"name\":\"_tokenAddress\",\"type\":\"address\"}],\"name\":\"startSale\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"terminateSale\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"input\",\"type\":\"address[]\"}],\"name\":\"whitelistAdd\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"input\",\"type\":\"address[]\"}],\"name\":\"whitelistRemove\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"updatePrice\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"sender\",\"type\":\"address\"},{\"name\":\"transfer\",\"type\":\"uint256\"}],\"name\":\"buyTokensBTC\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"input\",\"type\":\"address\"}],\"name\":\"whitelistCheck\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"sold\",\"type\":\"uint256\"}],\"name\":\"getBonusTier\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"sought\",\"type\":\"uint256\"},{\"name\":\"sold\",\"type\":\"uint256\"}],\"name\":\"getBonusTokens\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]"
 
 // TokenSale is an auto generated Go binding around an Ethereum contract.
 type TokenSale struct {
@@ -160,6 +160,32 @@ func (_TokenSale *TokenSaleTransactorRaw) Transact(opts *bind.TransactOpts, meth
 	return _TokenSale.Contract.contract.Transact(opts, method, params...)
 }
 
+// AvailableBonus is a free data retrieval call binding the contract method 0xd1b1910a.
+//
+// Solidity: function availableBonus() constant returns(uint256)
+func (_TokenSale *TokenSaleCaller) AvailableBonus(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _TokenSale.contract.Call(opts, out, "availableBonus")
+	return *ret0, err
+}
+
+// AvailableBonus is a free data retrieval call binding the contract method 0xd1b1910a.
+//
+// Solidity: function availableBonus() constant returns(uint256)
+func (_TokenSale *TokenSaleSession) AvailableBonus() (*big.Int, error) {
+	return _TokenSale.Contract.AvailableBonus(&_TokenSale.CallOpts)
+}
+
+// AvailableBonus is a free data retrieval call binding the contract method 0xd1b1910a.
+//
+// Solidity: function availableBonus() constant returns(uint256)
+func (_TokenSale *TokenSaleCallerSession) AvailableBonus() (*big.Int, error) {
+	return _TokenSale.Contract.AvailableBonus(&_TokenSale.CallOpts)
+}
+
 // AvailableUnits is a free data retrieval call binding the contract method 0x8324bb51.
 //
 // Solidity: function availableUnits() constant returns(uint256)
@@ -186,56 +212,30 @@ func (_TokenSale *TokenSaleCallerSession) AvailableUnits() (*big.Int, error) {
 	return _TokenSale.Contract.AvailableUnits(&_TokenSale.CallOpts)
 }
 
-// BasePrice is a free data retrieval call binding the contract method 0xc7876ea4.
+// BonusUsed is a free data retrieval call binding the contract method 0x7974fb87.
 //
-// Solidity: function basePrice() constant returns(uint256)
-func (_TokenSale *TokenSaleCaller) BasePrice(opts *bind.CallOpts) (*big.Int, error) {
+// Solidity: function bonusUsed() constant returns(uint256)
+func (_TokenSale *TokenSaleCaller) BonusUsed(opts *bind.CallOpts) (*big.Int, error) {
 	var (
 		ret0 = new(*big.Int)
 	)
 	out := ret0
-	err := _TokenSale.contract.Call(opts, out, "basePrice")
+	err := _TokenSale.contract.Call(opts, out, "bonusUsed")
 	return *ret0, err
 }
 
-// BasePrice is a free data retrieval call binding the contract method 0xc7876ea4.
+// BonusUsed is a free data retrieval call binding the contract method 0x7974fb87.
 //
-// Solidity: function basePrice() constant returns(uint256)
-func (_TokenSale *TokenSaleSession) BasePrice() (*big.Int, error) {
-	return _TokenSale.Contract.BasePrice(&_TokenSale.CallOpts)
+// Solidity: function bonusUsed() constant returns(uint256)
+func (_TokenSale *TokenSaleSession) BonusUsed() (*big.Int, error) {
+	return _TokenSale.Contract.BonusUsed(&_TokenSale.CallOpts)
 }
 
-// BasePrice is a free data retrieval call binding the contract method 0xc7876ea4.
+// BonusUsed is a free data retrieval call binding the contract method 0x7974fb87.
 //
-// Solidity: function basePrice() constant returns(uint256)
-func (_TokenSale *TokenSaleCallerSession) BasePrice() (*big.Int, error) {
-	return _TokenSale.Contract.BasePrice(&_TokenSale.CallOpts)
-}
-
-// DiscountPrice is a free data retrieval call binding the contract method 0x84ad8e8f.
-//
-// Solidity: function discountPrice() constant returns(uint256)
-func (_TokenSale *TokenSaleCaller) DiscountPrice(opts *bind.CallOpts) (*big.Int, error) {
-	var (
-		ret0 = new(*big.Int)
-	)
-	out := ret0
-	err := _TokenSale.contract.Call(opts, out, "discountPrice")
-	return *ret0, err
-}
-
-// DiscountPrice is a free data retrieval call binding the contract method 0x84ad8e8f.
-//
-// Solidity: function discountPrice() constant returns(uint256)
-func (_TokenSale *TokenSaleSession) DiscountPrice() (*big.Int, error) {
-	return _TokenSale.Contract.DiscountPrice(&_TokenSale.CallOpts)
-}
-
-// DiscountPrice is a free data retrieval call binding the contract method 0x84ad8e8f.
-//
-// Solidity: function discountPrice() constant returns(uint256)
-func (_TokenSale *TokenSaleCallerSession) DiscountPrice() (*big.Int, error) {
-	return _TokenSale.Contract.DiscountPrice(&_TokenSale.CallOpts)
+// Solidity: function bonusUsed() constant returns(uint256)
+func (_TokenSale *TokenSaleCallerSession) BonusUsed() (*big.Int, error) {
+	return _TokenSale.Contract.BonusUsed(&_TokenSale.CallOpts)
 }
 
 // Duration is a free data retrieval call binding the contract method 0x0fb5a6b4.
@@ -288,6 +288,58 @@ func (_TokenSale *TokenSaleSession) EndTime() (*big.Int, error) {
 // Solidity: function endTime() constant returns(uint256)
 func (_TokenSale *TokenSaleCallerSession) EndTime() (*big.Int, error) {
 	return _TokenSale.Contract.EndTime(&_TokenSale.CallOpts)
+}
+
+// GetBonusTier is a free data retrieval call binding the contract method 0x935e85b2.
+//
+// Solidity: function getBonusTier(sold uint256) constant returns(uint8)
+func (_TokenSale *TokenSaleCaller) GetBonusTier(opts *bind.CallOpts, sold *big.Int) (uint8, error) {
+	var (
+		ret0 = new(uint8)
+	)
+	out := ret0
+	err := _TokenSale.contract.Call(opts, out, "getBonusTier", sold)
+	return *ret0, err
+}
+
+// GetBonusTier is a free data retrieval call binding the contract method 0x935e85b2.
+//
+// Solidity: function getBonusTier(sold uint256) constant returns(uint8)
+func (_TokenSale *TokenSaleSession) GetBonusTier(sold *big.Int) (uint8, error) {
+	return _TokenSale.Contract.GetBonusTier(&_TokenSale.CallOpts, sold)
+}
+
+// GetBonusTier is a free data retrieval call binding the contract method 0x935e85b2.
+//
+// Solidity: function getBonusTier(sold uint256) constant returns(uint8)
+func (_TokenSale *TokenSaleCallerSession) GetBonusTier(sold *big.Int) (uint8, error) {
+	return _TokenSale.Contract.GetBonusTier(&_TokenSale.CallOpts, sold)
+}
+
+// GetBonusTokens is a free data retrieval call binding the contract method 0x1153e79c.
+//
+// Solidity: function getBonusTokens(sought uint256, sold uint256) constant returns(uint256)
+func (_TokenSale *TokenSaleCaller) GetBonusTokens(opts *bind.CallOpts, sought *big.Int, sold *big.Int) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _TokenSale.contract.Call(opts, out, "getBonusTokens", sought, sold)
+	return *ret0, err
+}
+
+// GetBonusTokens is a free data retrieval call binding the contract method 0x1153e79c.
+//
+// Solidity: function getBonusTokens(sought uint256, sold uint256) constant returns(uint256)
+func (_TokenSale *TokenSaleSession) GetBonusTokens(sought *big.Int, sold *big.Int) (*big.Int, error) {
+	return _TokenSale.Contract.GetBonusTokens(&_TokenSale.CallOpts, sought, sold)
+}
+
+// GetBonusTokens is a free data retrieval call binding the contract method 0x1153e79c.
+//
+// Solidity: function getBonusTokens(sought uint256, sold uint256) constant returns(uint256)
+func (_TokenSale *TokenSaleCallerSession) GetBonusTokens(sought *big.Int, sold *big.Int) (*big.Int, error) {
+	return _TokenSale.Contract.GetBonusTokens(&_TokenSale.CallOpts, sought, sold)
 }
 
 // IsActiveSale is a free data retrieval call binding the contract method 0x89a44a44.
@@ -366,6 +418,32 @@ func (_TokenSale *TokenSaleSession) OwnerAddress() (common.Address, error) {
 // Solidity: function ownerAddress() constant returns(address)
 func (_TokenSale *TokenSaleCallerSession) OwnerAddress() (common.Address, error) {
 	return _TokenSale.Contract.OwnerAddress(&_TokenSale.CallOpts)
+}
+
+// Price is a free data retrieval call binding the contract method 0xa035b1fe.
+//
+// Solidity: function price() constant returns(uint256)
+func (_TokenSale *TokenSaleCaller) Price(opts *bind.CallOpts) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _TokenSale.contract.Call(opts, out, "price")
+	return *ret0, err
+}
+
+// Price is a free data retrieval call binding the contract method 0xa035b1fe.
+//
+// Solidity: function price() constant returns(uint256)
+func (_TokenSale *TokenSaleSession) Price() (*big.Int, error) {
+	return _TokenSale.Contract.Price(&_TokenSale.CallOpts)
+}
+
+// Price is a free data retrieval call binding the contract method 0xa035b1fe.
+//
+// Solidity: function price() constant returns(uint256)
+func (_TokenSale *TokenSaleCallerSession) Price() (*big.Int, error) {
+	return _TokenSale.Contract.Price(&_TokenSale.CallOpts)
 }
 
 // ProxyAddress is a free data retrieval call binding the contract method 0x23f5c02d.
@@ -1394,14 +1472,14 @@ func (it *TokenSaleTokensPurchasedIterator) Close() error {
 // TokenSaleTokensPurchased represents a TokensPurchased event raised by the TokenSale contract.
 type TokenSaleTokensPurchased struct {
 	Beneficiary common.Address
-	Amount      *big.Int
+	UnitCount   *big.Int
 	IsBitcoin   bool
 	Raw         types.Log // Blockchain specific contextual infos
 }
 
 // FilterTokensPurchased is a free log retrieval operation binding the contract event 0x0ea576a332c77589cbeda817b213b2523a657301fb817b66aaab967a646d8b10.
 //
-// Solidity: event TokensPurchased(_beneficiary indexed address, amount uint256, isBitcoin bool)
+// Solidity: event TokensPurchased(_beneficiary indexed address, unitCount uint256, isBitcoin bool)
 func (_TokenSale *TokenSaleFilterer) FilterTokensPurchased(opts *bind.FilterOpts, _beneficiary []common.Address) (*TokenSaleTokensPurchasedIterator, error) {
 
 	var _beneficiaryRule []interface{}
@@ -1418,7 +1496,7 @@ func (_TokenSale *TokenSaleFilterer) FilterTokensPurchased(opts *bind.FilterOpts
 
 // WatchTokensPurchased is a free log subscription operation binding the contract event 0x0ea576a332c77589cbeda817b213b2523a657301fb817b66aaab967a646d8b10.
 //
-// Solidity: event TokensPurchased(_beneficiary indexed address, amount uint256, isBitcoin bool)
+// Solidity: event TokensPurchased(_beneficiary indexed address, unitCount uint256, isBitcoin bool)
 func (_TokenSale *TokenSaleFilterer) WatchTokensPurchased(opts *bind.WatchOpts, sink chan<- *TokenSaleTokensPurchased, _beneficiary []common.Address) (event.Subscription, error) {
 
 	var _beneficiaryRule []interface{}

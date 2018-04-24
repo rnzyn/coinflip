@@ -13,10 +13,11 @@ func (h *Coinflip) StatsGet(c echo.Context) error {
 	// Retrieve data from smart contracts
 	active, err := h.SaleContract.IsActiveSale(nil)
 	availableUnits, err := h.SaleContract.AvailableUnits(nil)
-	basePrice, err := h.SaleContract.BasePrice(nil)
-	discountPrice, err := h.SaleContract.DiscountPrice(nil)
+	availableBonus, err := h.SaleContract.AvailableBonus(nil)
+	bonusUsed, err := h.SaleContract.BonusUsed(nil)
 	duration, err := h.SaleContract.Duration(nil)
 	minPayment, err := h.SaleContract.MinPayment(nil)
+	price, err := h.SaleContract.Price(nil)
 	proxyAddress, err := h.SaleContract.ProxyAddress(nil)
 	startTime, err := h.SaleContract.StartTime(nil)
 	unitsSold, err := h.SaleContract.UnitsSold(nil)
@@ -30,10 +31,11 @@ func (h *Coinflip) StatsGet(c echo.Context) error {
 	return ctx.JSON(http.StatusOK, map[string]interface{}{
 		"active":         active,
 		"availableUnits": availableUnits,
-		"basePrice":      basePrice,
-		"discountPrice":  discountPrice,
+		"availableBonus": availableBonus,
+		"bonusUsed":      bonusUsed,
 		"duration":       duration,
 		"minPayment":     minPayment,
+		"price":          price,
 		"proxyAddress":   proxyAddress,
 		"startTime":      startTime,
 		"unitsSold":      unitsSold,
