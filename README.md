@@ -1,6 +1,6 @@
 # Coinflip
 
-[![CircleCI](https://circleci.com/gh/ShoppersShop/coinflip.svg?style=svg&circle-token=804bc203f4671e3d5bca41a1f207f508677e5bb2)](https://circleci.com/gh/ShoppersShop/coinflip)
+[![CircleCI](https://circleci.com/gh/ShoppersShop/coinflip.svg?style=svg&circle-token=804bc203f4671e3d5bca41a1f207f508677e5bb2)](https://circleci.com/gh/ShoppersShop/coinflip) [![Go Report Card](https://goreportcard.com/badge/github.com/ShoppersShop/coinflip)](https://goreportcard.com/report/github.com/ShoppersShop/coinflip)
 
 Token sale smart contract interaction. Features:
 
