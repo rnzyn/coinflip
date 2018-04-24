@@ -5,13 +5,13 @@
   branch = "master"
   name = "github.com/aristanetworks/goarista"
   packages = ["monotime"]
-  revision = "bfd6294e8be0d922f04fadaa00b252228d30e3fd"
+  revision = "7744847ed4e70ed5e50090f9094ed621b4f305d6"
 
 [[projects]]
   branch = "master"
   name = "github.com/btcsuite/btcd"
   packages = ["btcec"]
-  revision = "2be2f12b358dc57d70b8f501b00be450192efbc3"
+  revision = "675abc5df3c5531bc741b56a765e35623459da6d"
 
 [[projects]]
   name = "github.com/ddliu/go-httpclient"
@@ -47,13 +47,14 @@
     "event",
     "log",
     "metrics",
+    "p2p/netutil",
     "params",
     "rlp",
     "rpc",
     "trie"
   ]
-  revision = "329ac18ef617d0238f71637bffe78f028b0f13f7"
-  version = "v1.8.3"
+  revision = "12683feca7483f0b0bf425c3c520e2724f69f2aa"
+  version = "v1.8.6"
 
 [[projects]]
   name = "github.com/fsnotify/fsnotify"
@@ -123,8 +124,8 @@
     ".",
     "middleware"
   ]
-  revision = "a5d81b8d4a627f3f49dcb3164ef2bb5239682227"
-  version = "3.3.4"
+  revision = "6d227dfea4d2e52cb76856120b3c17f758139b4e"
+  version = "3.3.5"
 
 [[projects]]
   name = "github.com/labstack/gommon"
@@ -212,8 +213,7 @@
 [[projects]]
   name = "github.com/satori/go.uuid"
   packages = ["."]
-  revision = "f58768cc1a7a7e77a3bd49e98cdd21419399b6a3"
-  version = "v1.2.0"
+  revision = "36e9d2ebbde5e3f13ab2e25625fd453271d6522e"
 
 [[projects]]
   name = "github.com/shopspring/decimal"
@@ -251,8 +251,8 @@
 [[projects]]
   name = "github.com/spf13/pflag"
   packages = ["."]
-  revision = "e57e3eeb33f795204c1ca35f56c44f83227c6e66"
-  version = "v1.0.0"
+  revision = "583c0c0531f06d5278b7d917446061adc344b5cd"
+  version = "v1.0.1"
 
 [[projects]]
   name = "github.com/spf13/viper"
@@ -301,13 +301,13 @@
     "scrypt",
     "ssh/terminal"
   ]
-  revision = "b2aa35443fbc700ab74c586ae79b81c171851023"
+  revision = "2b6c08872f4b66da917bb4ce98df4f0307330f78"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/net"
   packages = ["websocket"]
-  revision = "b3c676e531a6dc479fa1b35ac961c13f5e2b4d2e"
+  revision = "5f9ae10d9af5b1c89ae6904293b14b064d4ada23"
 
 [[projects]]
   branch = "master"
@@ -316,7 +316,7 @@
     "unix",
     "windows"
   ]
-  revision = "1d206c9fa8975fb4cf00df1dc8bf3283dc24ba0e"
+  revision = "79b0c6888797020a994db17c8510466c72fe75d9"
 
 [[projects]]
   name = "golang.org/x/text"
@@ -336,9 +336,10 @@
   name = "golang.org/x/tools"
   packages = [
     "go/ast/astutil",
-    "imports"
+    "imports",
+    "internal/fastwalk"
   ]
-  revision = "ac136b6c2db7c4d43955e4bc7174db36dc0539c0"
+  revision = "c1def519f03ddf76f16b3e444ee1095d73afa01b"
 
 [[projects]]
   name = "gopkg.in/fatih/set.v0"
@@ -367,6 +368,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "2765f18be8d4e3cd9579752c22647eac24d44f16b7eb88f863a54b93b67d3031"
+  inputs-digest = "18c7b37097428739ebd1a29ddc4cc5bdb3bdffadd5ef4389f4a6aec8a98235b4"
   solver-name = "gps-cdcl"
   solver-version = 1

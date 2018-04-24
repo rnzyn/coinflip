@@ -14,7 +14,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/jinzhu/gorm"
 	"github.com/labstack/echo"
-	uuid "github.com/satori/go.uuid"
+	"github.com/satori/go.uuid"
 )
 
 func (h *Coinflip) BlockchainReceive(c echo.Context) error {
@@ -47,7 +47,10 @@ func (h *Coinflip) BlockchainReceive(c echo.Context) error {
 	}
 
 	// Generate invoice ID
-	invoiceID := uuid.NewV4()
+	invoiceID, err := uuid.NewV4()
+	if err != nil {
+		return ctx.JsonError(err)
+	}
 
 	// Send API request
 	requestUrl := core.BlockchainInfoBaseUrl + core.BlockchainInfoReceive
