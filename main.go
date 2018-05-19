@@ -5,8 +5,8 @@ import (
 	"github.com/ShoppersShop/coinflip/handlers"
 	echorelic "github.com/jessie-codes/echo-relic"
 	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
 	newrelic "github.com/newrelic/go-agent"
+	"github.com/pavel-kiselyov/echo-logrusmiddleware"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -28,7 +28,10 @@ func main() {
 	// Init echo
 	e := echo.New()
 	e.HideBanner = true
-	e.Use(middleware.Logger())
+
+	// Set up logrus middleware
+	e.Logger = logrusmiddleware.Logger{log.StandardLogger()}
+	e.Use(logrusmiddleware.Hook())
 
 	// Configure NewRelic if necessary
 	config := newrelic.NewConfig(cfg.AppName, cfg.NewRelicLicenseKey)

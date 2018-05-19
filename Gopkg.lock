@@ -193,6 +193,18 @@
   version = "v1.11.0"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/pavel-kiselyov/echo-logrusmiddleware"
+  packages = ["."]
+  revision = "0e2fb21c1a386b6a20916f1cebff9a2e881b7055"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/pavel-kiselyov/gormrus"
+  packages = ["."]
+  revision = "595c859f24966c3e50fb248db9136cff3d189ee7"
+
+[[projects]]
   name = "github.com/pborman/uuid"
   packages = ["."]
   revision = "e790cca94e6cc75c7064b1332e63811d4aae1a53"
@@ -369,6 +381,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "afa18100f8010b428c601041374e7c1097815dda0a2e8d2e221fb045d0c12d82"
+  inputs-digest = "131abb7af2224115e360ee212ea0e48ecdfd8f0721058387e86e6c1bf1e16f2f"
   solver-name = "gps-cdcl"
   solver-version = 1

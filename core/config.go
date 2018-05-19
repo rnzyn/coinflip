@@ -15,6 +15,7 @@ type Config struct {
 	Debug                bool
 	Database             string
 	Domain               string
+	LogLevel             string
 	Port                 string
 	Protocol             string
 	Features             []string
@@ -39,6 +40,7 @@ func NewConfig(prefix string, build *Build) *Config {
 	viper.SetDefault(ConfigDefaultAppName, ConfigDefaultAppName)
 	viper.SetDefault(ConfigOptionPort, ConfigDefaultPort)
 	viper.SetDefault(ConfigOptionDebug, ConfigDefaultDebug)
+	viper.SetDefault(ConfigOptionLogLevel, ConfigDefaultLogLevel)
 	viper.SetDefault(ConfigOptionFeatures, ConfigDefaultFeatures)
 	viper.SetDefault(ConfigOptionProtocol, ConfigDefaultProtocol)
 	viper.SetDefault(ConfigOptionHttpConnectTimeout, ConfigDefaultHttpConnectTimeout)
@@ -51,6 +53,7 @@ func NewConfig(prefix string, build *Build) *Config {
 	cfg.Port = viper.GetString(ConfigOptionPort)
 	cfg.Features = viper.GetStringSlice(ConfigOptionFeatures)
 	cfg.Debug = viper.GetBool(ConfigOptionDebug)
+	cfg.LogLevel = viper.GetString(ConfigOptionLogLevel)
 	cfg.NewRelicLicenseKey = viper.GetString(ConfigOptionNewRelicLicenseKey)
 	cfg.Protocol = viper.GetString(ConfigOptionProtocol)
 	cfg.HttpConnectTimeout = viper.GetInt(ConfigOptionHttpConnectTimeout)
@@ -103,6 +106,14 @@ func NewConfig(prefix string, build *Build) *Config {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// Set log level
+	level, err := log.ParseLevel(cfg.LogLevel)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.SetLevel(level)
 
 	// Set fallback rate
 	cfg.BtcEthFallbackRate = fallbackRate

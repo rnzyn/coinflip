@@ -8,7 +8,10 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: make deps
+          command: make install
       - run:
-          name: Compile
+          name: Download Packages
+          command: make ensure
+      - run:
+          name: Build
           command: make build

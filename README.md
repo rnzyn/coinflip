@@ -84,7 +84,7 @@ Optional configuration options:
 5. Run Coinflip:
 
     ```
-    $ make run
+    $ ./coinflip
     ```
 
 6. Query with Postman:

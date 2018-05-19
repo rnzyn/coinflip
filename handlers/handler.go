@@ -11,6 +11,7 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"github.com/pavel-kiselyov/gormrus"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -40,6 +41,7 @@ func NewCoinflip(cfg *core.Config) *Coinflip {
 
 	// Configure database handler
 	db.LogMode(cfg.Debug)
+	db.SetLogger(gormrus.New())
 
 	// Auto-migrate
 	db.AutoMigrate(&models.Account{}, &models.Address{}, &models.Transfer{})

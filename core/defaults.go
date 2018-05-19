@@ -40,6 +40,7 @@ const (
 	ConfigOptionAppName              = "app_name"
 	ConfigOptionNewRelicLicenseKey   = "newrelic_license_key"
 	ConfigOptionDebug                = "debug"
+	ConfigOptionLogLevel             = "log_level"
 	ConfigOptionDatabase             = "database"
 	ConfigOptionPort                 = "port"
 	ConfigOptionProtocol             = "protocol"
@@ -60,6 +61,7 @@ const (
 	ConfigDefaultAppName            = "coinflip"
 	ConfigDefaultDebug              = false
 	ConfigDefaultPort               = 3000
+	ConfigDefaultLogLevel           = "INFO"
 	ConfigDefaultHttpTimeout        = 20000
 	ConfigDefaultHttpConnectTimeout = 10000
 	ConfigDefaultProtocol           = "https"
