@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/ShoppersShop/coinflip/core"
+	"github.com/ShoppersShop/coinflip/responses"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/labstack/echo"
 )
@@ -25,7 +26,7 @@ func (h *Coinflip) WhitelistGet(c echo.Context) error {
 		return ctx.JsonError(err)
 	}
 
-	return ctx.JSON(http.StatusOK, map[string]interface{}{
-		"whitelisted": result,
+	return ctx.JSON(http.StatusOK, responses.WhitelistGet{
+		Whitelisted: result,
 	})
 }

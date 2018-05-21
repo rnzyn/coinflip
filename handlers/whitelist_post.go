@@ -6,6 +6,7 @@ import (
 
 	"github.com/ShoppersShop/coinflip/core"
 	"github.com/ShoppersShop/coinflip/payloads"
+	"github.com/ShoppersShop/coinflip/responses"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/labstack/echo"
 )
@@ -37,7 +38,7 @@ func (h *Coinflip) WhitelistPost(c echo.Context) error {
 	}
 
 	// Return response
-	return ctx.JSON(http.StatusOK, map[string]interface{}{
-		"txHash": transaction.Hash().String(),
+	return ctx.JSON(http.StatusOK, responses.WhitelistPost{
+		TxHash: transaction.Hash().Hex(),
 	})
 }

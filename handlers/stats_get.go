@@ -4,13 +4,14 @@ import (
 	"net/http"
 
 	"github.com/ShoppersShop/coinflip/core"
+	"github.com/ShoppersShop/coinflip/responses"
 	"github.com/labstack/echo"
 )
 
 func (h *Coinflip) StatsGet(c echo.Context) error {
 	ctx := c.(*core.CoinflipContext)
 
-	// Retrieve data from smart contracts
+	// Retrieve data from smart contract
 	active, err := h.SaleContract.IsActiveSale(nil)
 	availableUnits, err := h.SaleContract.AvailableUnits(nil)
 	availableBonus, err := h.SaleContract.AvailableBonus(nil)
@@ -18,28 +19,24 @@ func (h *Coinflip) StatsGet(c echo.Context) error {
 	duration, err := h.SaleContract.Duration(nil)
 	minPayment, err := h.SaleContract.MinPayment(nil)
 	price, err := h.SaleContract.Price(nil)
-	proxyAddress, err := h.SaleContract.ProxyAddress(nil)
 	startTime, err := h.SaleContract.StartTime(nil)
 	unitsSold, err := h.SaleContract.UnitsSold(nil)
-	walletAddress, err := h.SaleContract.WalletAddress(nil)
 	weiReceived, err := h.SaleContract.WeiReceived(nil)
 
 	if err != nil {
 		return ctx.JsonError(err)
 	}
 
-	return ctx.JSON(http.StatusOK, map[string]interface{}{
-		"active":         active,
-		"availableUnits": availableUnits,
-		"availableBonus": availableBonus,
-		"bonusUsed":      bonusUsed,
-		"duration":       duration,
-		"minPayment":     minPayment,
-		"price":          price,
-		"proxyAddress":   proxyAddress,
-		"startTime":      startTime,
-		"unitsSold":      unitsSold,
-		"walletAddress":  walletAddress,
-		"weiReceived":    weiReceived,
+	return ctx.JSON(http.StatusOK, responses.Stats{
+		Active:         active,
+		AvailableUnits: availableUnits.Uint64(),
+		AvailableBonus: availableBonus.Uint64(),
+		BonusUsed:      bonusUsed.Uint64(),
+		Duration:       duration.Uint64(),
+		MinPayment:     minPayment.Uint64(),
+		Price:          price.Uint64(),
+		StartTime:      startTime.Uint64(),
+		UnitsSold:      unitsSold.Uint64(),
+		WeiReceived:    weiReceived.Uint64(),
 	})
 }
